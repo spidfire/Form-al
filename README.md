@@ -31,10 +31,11 @@ Form engine for php
       ->
 
     if(isset($_GET['id'])){
+        $id = $f->remember($_GET['id']);
         //update
         if($f->submitted()){    
             $data = $f->export();
-            DB::update('user',$data,"id=%d",$_GET['id']);
+            DB::update('user',$data,"id=%d",$id);
         }
 
         $user = DB::queryFirstRow("select * from user where id = %d");
