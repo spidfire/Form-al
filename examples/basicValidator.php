@@ -1,5 +1,6 @@
 ***REMOVED***
     
+    use spidfire\Utilities\HtmlBuilder;
 ***REMOVED***
 
 ***REMOVED***
@@ -16,10 +17,19 @@
 
 
 
-***REMOVED***
+    $f->import(array(
+      "firstname" => "Test123"
+      ));
+    
+    
 
-    if($s->isSubmitted()){
+    if($s->isClicked()){
         echo "gegevens ontvangen!<br/><pre>";
         var_dump($f->export());
         echo "</pre>";
     ***REMOVED***
+
+
+***REMOVED***
+
+    

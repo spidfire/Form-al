@@ -5,22 +5,9 @@ use spidfire\Validators\MinLength;
 use spidfire\ElementBase;
 use spidfire\Utilities\HtmlBuilder;
 
-class Input extends ElementBase{
-	var $value = null;
+class Input extends ElementBase{	
 	var $type = "text";
-
-	function setValue($value){
-		$this->value =  $value;
-	***REMOVED***
-
-	function getValue(){
-		$submit = $this->getSubmitValue();
-		if($submit != null){
-			return $submit;
-		***REMOVED***else{
-			return $this->value;
-		***REMOVED***
-	***REMOVED***
+	
 
 	private $labelname = "";
 	function label($text){
@@ -28,16 +15,14 @@ class Input extends ElementBase{
 		return $this;
 	***REMOVED***
 
-	function getHumanName(){
+	function getLabel(){
 		return $this->labelname;
 	***REMOVED***
 
 
 	function render(){
-		$e = new HtmlBuilder('label');
-		$e->addText($this->getHumanName());
-		$e->add('input')
-		  ->attr('type',$this->type)
+		$e = new HtmlBuilder('input.form-control');
+		$e->attr('type',$this->type)
 		  ->attr('name', $this->getName())
 		  ->attr('value', $this->getValue());
 		return $e->render();

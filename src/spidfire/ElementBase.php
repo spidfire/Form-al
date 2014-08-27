@@ -5,18 +5,29 @@ namespace spidfire;
 
 abstract class ElementBase{
 	private $uniquename;
+	private $formal;
 	private $errors = array();
 	private $validators = array();
 	private $transformers = array();
+	var $value = null;
 
-	function getName(){
+	final function getName(){
+		return $this->getFormAl()->getName().$this->getUniquenName();
+	***REMOVED***
+	final function getUniquenName(){
 		return $this->uniquename;
 	***REMOVED***
-	function __construct($name){
+	function __construct($name, FormAlAbstract $formal){
 		$this->uniquename = $name;
+		$this->formal = $formal;
 	***REMOVED***
-	function getHumanName(){
-		return ucfirst($this->uniquename);
+
+	function getFormAl(){
+		return $this->formal;
+	***REMOVED***
+
+	function getLabel(){
+		return ucfirst($this->getUniquenName());
 	***REMOVED***
 
 	function addValidator(ValidatorBase $v){
@@ -24,40 +35,61 @@ abstract class ElementBase{
 		return $this;
 	***REMOVED***
 
-	abstract function setValue($value);
-	abstract function getValue();
 	abstract function render();
 
-	function feedArray(){
-		return $_GET;
+	function setValue($value){
+		$this->value =  $value;
+	***REMOVED***
+
+	function getValue(){
+		$submit = $this->getSubmitValue();
+		if($submit != null)
+			return $submit;
+		else
+			return $this->value;
+		
 	***REMOVED***
 	function getSubmitValue(){
-		$feed = $this->feedArray();
-		return isset($feed[$this->uniquename]) ? $feed[$this->uniquename] : null;
+		$update = $this->getFormAl()->updatedValues();
+
+		return isset($update[$this->getName()]) ? $update[$this->getName()] : null;
 	***REMOVED***
 
 
-	function runValidators(){
-		$errors = array();
+	private function runValidators(){
+		$this->errors = array();
 		foreach ($this->validators as $validator) {
 			$value = $this->getValue();
-			if($validator->validateInput($value,$this)){
+			if($validator->validateInput($value,$this) == false){
 				return false;
 			***REMOVED***
 		***REMOVED***
 		return true;
 	***REMOVED***
 
-	function error($title, $text){
-		$this->errors[] = array("type" => "error","title"=>$title,"text"=>$text,"name" => $this->getHumanName());
+	function error($title, $text,$type='error'){
+		$fieldname = $this->getLabel();
+		$msg = "Field: '".$fieldname."' has an ".$type.": ".$title." <br/>\n";
+		$msg .= "Info: ".$text." <br/>\n";
+		$this->errors[] = array(
+			"type" => $type,
+			"title"=>$title,
+			"text"=>$text,
+			"name" => $fieldname, 
+			"msg"=> $msg
+***REMOVED***
 	***REMOVED***
 
 	function warning($title, $text){
-		$this->errors[] = array("type" => "warning","title"=>$title,"text"=>$text,"name" => $this->getHumanName());
+		return $this->error($title,$text,'warning');
 	***REMOVED***
 
 	function getErrors(){
-		return $this->errors;
+		if(!$this->runValidators()){
+			return $this->errors;			
+		***REMOVED***
+		return array();
 	***REMOVED***
+
 
 ***REMOVED***

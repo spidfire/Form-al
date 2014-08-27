@@ -14,18 +14,18 @@ class Submit extends ElementBase{
 		return md5($this->getName());
 	***REMOVED***
 
-	function isSubmitted(){
-		$feed = $this->feedArray();
+	function isClicked($fail_on_error = true){
+		$updateArray = $this->getFormAl()->updatedValues();
 		$name = md5($this->getName());
-		return isset($feed[$name]);
+		return isset($updateArray[$name]);
+		
 	***REMOVED***
 
 	function render(){
-		$e = new HtmlBuilder('label');
-		$e->add('input')
-		  ->attr('type', 'submit')
+		$e = new HtmlBuilder('input.form-control');
+		  $e->attr('type', 'submit')
 		  ->attr('name',  md5($this->getName()))
-		  ->attr('value', $this->getName());
+		  ->attr('value', $this->getLabel());
 		return $e->render();
 	***REMOVED***
 ***REMOVED***

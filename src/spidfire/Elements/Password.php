@@ -14,7 +14,7 @@ class Password extends Input{
 	function getValue(){
 		$submit = $this->getSubmitValue();
 		if($submit != null){
-			return $submit;
+			return $this->encode($submit);
 		***REMOVED***else{
 			return $this->value;
 		***REMOVED***
