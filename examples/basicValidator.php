@@ -1,5 +1,6 @@
 <?php
     
+    use spidfire\Utilities\HtmlBuilder;
     include("../vendor/autoload.php");
 
     $f = new spidfire\FormAl("UserEdit");
@@ -16,10 +17,19 @@
 
 
 
-    echo $f->render();
+    $f->import(array(
+      "firstname" => "Test123"
+      ));
+    
+    
 
-    if($s->isSubmitted()){
+    if($s->isClicked()){
         echo "gegevens ontvangen!<br/><pre>";
         var_dump($f->export());
         echo "</pre>";
     }
+
+
+    echo $f->render();
+
+    

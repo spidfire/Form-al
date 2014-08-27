@@ -12,7 +12,7 @@
 
     $s = $f->submit('Verzend met deze knop');
 
-    if($s->isSubmitted()){
+    if($s->isClicked()){
         echo "gegevens ontvangen!<br/>";
         var_dump($f->export());
     }
