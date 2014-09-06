@@ -39,6 +39,13 @@ abstract class ElementBase{
 
 	function setValue($value){
 		$this->value =  $value;
+		return $this;
+	}
+	function defaultValue($value){
+		if(is_null($this->value)){
+			$this->value = $value;
+		}
+		return $this;
 	}
 
 	function getValue(){
