@@ -16,9 +16,9 @@ class MinLength extends ValidatorBase {
 			if(strlen($data) >= $this->minlength)
 				return true;
 			else
-				$element->error("Length too short", "The length of this string should be equal or longer than ".$this->minlength);		
+				$element->error("Veld inhoud te kort", "De lengte van de waardes moet langer zijn dan ".$this->minlength." characters");		
 		}else
-			$element->error("Unkown data type", "The type of this value is not a String");
+			$element->error("Onbekende inhoud", "De inhoud van dit veld is niet correct. (min lengte check)");
 		return false;
 	}
 

@@ -5,20 +5,23 @@ use spidfire\ValidatorBase;
 use spidfire\ElementBase;
 
 class NotNull extends ValidatorBase {
-
+	var $trans_empty = "Leeg veld";
+	var $trans_empty_text = "Dit veld mag niet leeg zijn";
 	function validateInput($data,ElementBase $element){
 		if(is_string($data)){
 			if(!empty($data))
 				return true;
 			else
-				$element->error("The given data is empty", "The given input should not be empty".$this->minlength);		
+				$element->error($trans_empty, $trans_empty_text);
 		}elseif(is_array($data)){
 			if(count($data) > 0)
 				return true;
 			else
-				$element->error("The given data is empty", "The given input should not be empty".$this->minlength);		
-		}else
-			$element->error("Unkown data type", "The type of this value is not a String");
+				$element->error($trans_empty, $trans_empty_text);		
+		}elseif(is_null($data))
+			$element->error($trans_empty, $trans_empty_text);
+		else
+			$element->error("Onbekende inhoud", "De inhoud van dit veld is niet correct. (is null)");
 		return false;
 	}
 
