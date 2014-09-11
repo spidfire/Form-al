@@ -76,8 +76,8 @@ abstract class ElementBase{
 
 	function error($title, $text,$type='error'){
 		$fieldname = $this->getLabel();
-		$msg = "Field: '".$fieldname."' has an ".$type.": ".$title." <br/>\n";
-		$msg .= "Info: ".$text." <br/>\n";
+		$msg = "In het veld '".$fieldname."' is een fout opgetreden!<br/>\n";
+		$msg .= "<strong>".$title."</strong> ".$text." <br/>\n";
 		$this->errors[] = array(
 			"type" => $type,
 			"title"=>$title,

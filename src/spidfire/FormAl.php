@@ -8,7 +8,9 @@ class FormAl extends FormAlAbstract{
 	const HIDE_ERRORS = false;
 	function render($show_errors = true){
 		$form = HtmlBuilder::create('form')
-				->attr('method', 'POST');
+				->attr('method', 'POST')
+				->attr('enctype', "multipart/form-data");
+
 		if($show_errors)				
 			if($this->hasErrors()){
 		      foreach ($this->getErrors() as $e) {
