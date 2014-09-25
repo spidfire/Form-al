@@ -6,36 +6,64 @@ use spidfire\Utilities\HtmlBuilder;
 class FormAl extends FormAlAbstract{	
 	const SHOW_ERRORS = true;
 	const HIDE_ERRORS = false;
+	var $use_tabs = true;
+	var $tab_count = 0;
+
 	function render($show_errors = true){
 		$form = HtmlBuilder::create('form')
 				->attr('method', 'POST')
+				->attr('id', $this->getName())
 				->attr('enctype', "multipart/form-data");
 
 		if($show_errors)				
 			if($this->hasErrors()){
-		      foreach ($this->getErrors() as $e) {
-		            $form->add('div')
-		              ->attr("style","background-color:red;")
-		              ->addHtml($e['msg'])
-		              ->render();
-		      }
+            $form->add('div.alert.alert-danger')
+            ->addHtml("<h2>Er zijn ".count($this->getErrors())." fouten opgetreden.</h2>");
+		      // foreach ($this->getErrors() as $e) {
+		      //         ->addHtml($e['msg'])
+		      //         ->render();
+		      // }
 		    }
 
 		foreach ($this->getelements() as $el) {
-			$div = $form->add('div.form-group');
-			$label = $div->add('label')
-			    ->addText($el->getLabel());
-			$label->addHtml($el->render());
-			if($show_errors)	
-				foreach ($el->getErrors() as $err) {
-					$form->add('div.alert.alert-danger')
-					     ->style('color:red;font-weight:bold;')
-					     ->attr('title', wordwrap($err['title']. "\n" . $err['text'],75))
-					     ->addText("!");
-				}			
-			$form->nl();
+			if($this->use_tabs == true && $el instanceof Elements\Title){
+
+				if($this->tab_count > 0){
+					$form->addHtml("</section>");
+				}
+
+				$form->addHtml("<section class='step' data-step-title=\"".htmlentities($el->text)."\">");
+				$this->tab_count++;
+
+			}else{
+				if($el->usesFullWidth() == true){
+					$div = $form->add('div.form-group.row');
+					$holder = $div->add('div.col-sm-12');
+				}else{
+					$div = $form->add('div.form-group.row');
+					$label = $div->add('label.col-sm-3.control-label')
+				    ->addText($el->getLabel());
+					$holder = $div->add('div.col-sm-9');
+				}
+				
+				
+				
+				if($show_errors)	
+					foreach ($el->getErrors() as $err) {
+						$holder->add('div.alert.alert-danger')
+						     ->style('')
+						     ->addHtml("<strong>".$err['title']. "</strong> - " . $err['text']);
+					}			
+				// $form->nl();
+				$holder->addHtml($el->render());
+			}
 		}
-		
+		if($this->tab_count > 0){
+			$form->addHtml("</section>");
+			$form->addHtml("<script>");
+			$form->addHtml("$('#".$this->getName()."').easyWizard();"); 
+			$form->addHtml("</script>");
+		}
 		return $form->render();
 	}
 
@@ -64,6 +92,9 @@ class FormAl extends FormAlAbstract{
 		"select" => "spidfire\Elements\Select",
 		"autocompete" => "spidfire\Elements\Autocomplete",
 		"submit" => "spidfire\Elements\Submit",
+		"text" => "spidfire\Elements\Text",
+		"title" => "spidfire\Elements\Title",
+		"customFields" => "spidfire\Elements\CustomFields",
 		);
 
 

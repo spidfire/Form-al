@@ -29,9 +29,11 @@ abstract class FormAlAbstract
         if ($this->phase == self::PHASE_SETUP) $this->phase = self::PHASE_USAGE;
         $out = array();
         foreach ($this->elements as $el) {
-            $name = $el->getUniquenName();
-            $value = $el->getValue();
-            $out[$name] = $value;
+            if($el->mark_for_export == true){                
+                $name = $el->getUniquenName();
+                $value = $el->getValue();
+                $out[$name] = $value;
+            }
         }
         return $out;
     }
@@ -78,6 +80,7 @@ abstract class FormAlAbstract
     function __call($name, $args) {
         if (isset($this->callables[$name])) {
             $elment = $this->callables[$name];
+            $args[0] = isset($args[0]) ? $args[0] : false;
             if (count($args) == 0) $el = new $elment($this);
             elseif (count($args) == 1) $el = new $elment($args[0], $this);
             elseif (count($args) == 2) $el = new $elment($args[0], $args[1], $this);
