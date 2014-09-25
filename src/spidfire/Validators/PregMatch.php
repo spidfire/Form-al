@@ -14,14 +14,21 @@ class PregMatch extends ValidatorBase {
 	function getResults(){
 		return $this->results;
 	***REMOVED***
+	var $errorTitle = "Fout";
+	var $errorText = "De gegeven text voldoet niet aan de regels";
 
+	function setError($title,$error){
+		$this->errorTitle = $title;
+		$this->errorText = $error;
+		return $this;
+	***REMOVED***
 	function validateInput($data,ElementBase $element){
 		$this->results = array();
 		if(is_string($data)){
 			if(preg_match($this->regex, $data, $this->results))
 				return true;
 			else
-				$element->error("Regex did not match the given data", "The regulair expression did not match the given data");		
+				$element->error($this->errorTitle,$this->errorText);		
 		***REMOVED***else
 			$element->error("Unkown data type", "The type of this value is not a String");
 		return false;

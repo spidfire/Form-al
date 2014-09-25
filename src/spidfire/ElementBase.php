@@ -9,6 +9,8 @@ abstract class ElementBase{
 	private $errors = array();
 	private $validators = array();
 	private $transformers = array();
+	var $full_width = false; // must a div with full with be used?
+	var $mark_for_export = true; // Must this element be exported
 	var $value = null;
 
 	final function getName(){
@@ -16,6 +18,10 @@ abstract class ElementBase{
 	***REMOVED***
 	final function getUniquenName(){
 		return $this->uniquename;
+	***REMOVED***
+
+	function usesFullWidth(){
+		return $this->full_width;
 	***REMOVED***
 	function __construct($name, FormAlAbstract $formal){
 		$this->uniquename = $name;
@@ -72,6 +78,10 @@ abstract class ElementBase{
 			***REMOVED***
 		***REMOVED***
 		return true;
+	***REMOVED***
+	function notNull(){
+		$this->addValidator(new Validators\NotNull());
+		return $this;
 	***REMOVED***
 
 	function error($title, $text,$type='error'){

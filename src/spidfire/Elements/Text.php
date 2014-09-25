@@ -4,7 +4,7 @@ namespace spidfire\Elements;
 use spidfire\ElementBase;
 use spidfire\Utilities\HtmlBuilder;
 
-class Submit extends ElementBase{
+class Text extends ElementBase{
 	var $value = null;
 	var $full_width = true;
 	var $mark_for_export = false;
@@ -13,7 +13,7 @@ class Submit extends ElementBase{
 	***REMOVED***
 
 	function getValue(){
-		return md5($this->getName());
+		return false;
 	***REMOVED***
 
 	function isClicked($fail_on_error = true){
@@ -22,12 +22,12 @@ class Submit extends ElementBase{
 		return isset($updateArray[$name]);
 		
 	***REMOVED***
-
+	var $text = "You need to set this text with using ->setText()";
+	function setText($text){
+		$this->text = $text;
+	***REMOVED***
 	function render(){
-		$e = new HtmlBuilder('input.form-control.btn.btn-primary');
-		  $e->attr('type', 'submit')
-		  ->attr('name',  md5($this->getName()))
-		  ->attr('value', $this->getLabel());
-		return $e->render();
+		  
+		return $this->text;
 	***REMOVED***
 ***REMOVED***

@@ -5,7 +5,7 @@ use spidfire\ElementBase;
 use spidfire\Utilities\HtmlBuilder;
 use spidfire\Utilities\MimeType;
 
-class Imageupload extends Input{
+class ImageUpload extends Input{
 	var $public_path = "images/";
 	var $local_path = "images/";
 	private $is_uploaded = false;
@@ -91,7 +91,7 @@ class Imageupload extends Input{
 		    if(class_exists('finfo')){
 			    // DO NOT TRUST $_FILES['upfile']['mime'] VALUE !!
 			    // Check MIME Type by yourself.
-			    $finfo = new finfo(FILEINFO_MIME_TYPE);
+			    $finfo = new \finfo(FILEINFO_MIME_TYPE);
 			    if (false === $ext = array_search(
 			        $finfo->file($file['tmp_name']),
 			        array(

@@ -4,20 +4,15 @@ namespace spidfire\Validators;
 use spidfire\ValidatorBase;
 use spidfire\ElementBase;
 
-class NotNull extends ValidatorBase {
-	var $trans_empty = "Leeg veld";
-	var $trans_empty_text = "Dit veld mag niet leeg zijn";
+class MinFileSize extends ValidatorBase {
+	var $trans_empty = "Bestand te klein";
+	var $trans_empty_text = "Bestand wat ingeleverd is moet minimaal 1 MB zijn";
 	function validateInput($data,ElementBase $element){
 		if(is_string($data)){
-			if(!empty($data))
+			if(filesize($data) < 1024*1024)
 				return true;
 			else
-				$element->error($this->trans_empty, $this->trans_empty_text);
-		***REMOVED***elseif(is_array($data)){
-			if(count($data) > 0)
-				return true;
-			else
-				$element->error($this->trans_empty, $this->trans_empty_text);		
+				$element->error($this->trans_empty, $this->trans_empty_text);	
 		***REMOVED***elseif(is_null($data))
 			$element->error($this->trans_empty, $this->trans_empty_text);
 		else
