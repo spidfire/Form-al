@@ -14,9 +14,9 @@ abstract class ElementBase{
 	var $value = null;
 
 	final function getName(){
-		return $this->getFormAl()->getName().$this->getUniquenName();
+		return $this->getFormAl()->getName().$this->getUniqueName();
 	***REMOVED***
-	final function getUniquenName(){
+	final function getUniqueName(){
 		return $this->uniquename;
 	***REMOVED***
 
@@ -33,7 +33,7 @@ abstract class ElementBase{
 	***REMOVED***
 
 	function getLabel(){
-		return ucfirst($this->getUniquenName());
+		return ucfirst($this->getUniqueName());
 	***REMOVED***
 
 	function addValidator(ValidatorBase $v){

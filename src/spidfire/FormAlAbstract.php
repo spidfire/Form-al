@@ -6,7 +6,7 @@ abstract class FormAlAbstract
     private $uniquename;
     private $element_storage = array();
     private $elements = array();
-    
+    private $plugins = array();
     private $phase = 0;
     const PHASE_SETUP = 0;
     const PHASE_USAGE = 1;
@@ -33,6 +33,16 @@ abstract class FormAlAbstract
         return unserialize($value); 
     ***REMOVED***
 
+    function runPlugins(){
+        foreach($this->plugins as $plugin){
+            $plugin->run();
+        ***REMOVED***
+    ***REMOVED***
+
+    function addPlugin($plugin){
+        array_push($this->plugins, $plugin);
+
+    ***REMOVED***
     function export() {
         if ($this->phase == self::PHASE_SETUP) $this->phase = self::PHASE_USAGE;
         $out = array();
@@ -81,6 +91,14 @@ abstract class FormAlAbstract
         return $this->elements;
     ***REMOVED***
     
+    function getElement($name){
+        foreach($this->elements as $element){
+            if($element->getUniqueName() == $name){
+                return $element;
+            ***REMOVED***
+        ***REMOVED***
+        Throw new \Exception("This element does not exist", 1);
+    ***REMOVED***
     abstract function render();
     
     var $callables = array();
