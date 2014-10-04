@@ -25,12 +25,20 @@ abstract class FormAlAbstract
         $this->elements[] = $el;
     ***REMOVED***
     
+    function exportForm() {
+        return serialize($this);
+    ***REMOVED***
+
+    function importForm($value){
+        return unserialize($value); 
+    ***REMOVED***
+
     function export() {
         if ($this->phase == self::PHASE_SETUP) $this->phase = self::PHASE_USAGE;
         $out = array();
         foreach ($this->elements as $el) {
             if($el->mark_for_export == true){                
-                $name = $el->getUniquenName();
+                $name = $el->getName();
                 $value = $el->getValue();
                 $out[$name] = $value;
             ***REMOVED***
