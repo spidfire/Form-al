@@ -45,9 +45,19 @@ class ImageUpload extends Input{
 			  ->attr('name', $this->getName())
 			  ->attr('value', $this->getValue());
 		}
-		$inp = $e->add('input.form-control')
-		  ->attr('type','file')
-		  ->attr('name', $this->getName());
+		if(isset($GLOBALS['showimageinputhack'])){
+			if(!empty($this->getValue())){
+				$inp = $e->add('img')
+				  ->attr('class','superuberimagehack')
+				  ->attr('name', $this->getName())
+				  ->attr('src', "http://almanapp.nl/inleveren/images/" .$this->getValue());
+			}
+		}else{
+			$inp = $e->add('input.form-control')
+			  ->attr('type','file')
+			  ->attr('name', $this->getName());
+		}
+		
 		return $e->render();
 	}
 
