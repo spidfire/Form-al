@@ -18,7 +18,9 @@ abstract class FormAlAbstract
     final function getName() {
         return $this->uniquename;
     ***REMOVED***
-    
+    function setName($uniquename){
+        $this->uniquename = $uniquename;
+    ***REMOVED***
     function addElement(ElementBase $el) {
         if ($this->phase != self::PHASE_SETUP) throw new \Exception("Setup phase is passed", 1);
         
@@ -48,7 +50,7 @@ abstract class FormAlAbstract
         $out = array();
         foreach ($this->elements as $el) {
             if($el->mark_for_export == true){                
-                $name = $el->getName();
+                $name = $el->getUniqueName();
                 $value = $el->getValue();
                 $out[$name] = $value;
             ***REMOVED***
@@ -78,8 +80,9 @@ abstract class FormAlAbstract
     function import($data) {
         if (is_array($data)) {
             foreach ($this->elements as $el) {
-                if (isset($data[$el->getName() ])) {
-                    $el->setValue($data[$el->getName() ]);
+                //echo $el->getUniqueName() . "<br>";
+                if (isset($data[$el->getUniqueName() ])) {
+                    $el->setValue($data[$el->getUniqueName() ]);
                 ***REMOVED***
             ***REMOVED***
         ***REMOVED*** else {
