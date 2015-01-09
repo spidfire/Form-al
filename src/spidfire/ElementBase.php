@@ -55,8 +55,8 @@ abstract class ElementBase{
 	}
 
 	function getValue(){
-		$submit = $this->getSubmitValue();
-		if($submit != null)
+		$submit = $this->getSubmitValue();		
+		if(!is_null($submit))
 			return $submit;
 		else
 			return $this->value;
@@ -64,8 +64,7 @@ abstract class ElementBase{
 	}
 	function getSubmitValue(){
 		$update = $this->getFormAl()->updatedValues();
-
-		return isset($update[$this->getName()]) ? $update[$this->getName()] : null;
+		return array_key_exists($this->getName(), $update) ? $update[$this->getName()] : null;
 	}
 
 

@@ -105,7 +105,9 @@ abstract class FormAlAbstract
     abstract function render();
     
     var $callables = array();
-    
+    function getAbstract(){
+        return $this;
+    }
     function __call($name, $args) {
         if (isset($this->callables[$name])) {
             $elment = $this->callables[$name];

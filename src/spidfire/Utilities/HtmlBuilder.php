@@ -37,7 +37,7 @@ class HtmlBuilder{
 		}elseif(is_string($style)){
 			$this->attr('style',$style);
 		}else{
-			throw new Exception("Unkown type for style in HtmlBuilder", 1);
+			throw new \Exception("Unkown type for style in HtmlBuilder", 1);
 			
 		}
 		return $this;
@@ -98,7 +98,7 @@ class HtmlBuilder{
 		
 		foreach ($this->attr as $key => $value) {
 			if(is_array($value))
-				throw new Exception("The value of the attribute '$key' is an array!", 1);
+				throw new \Exception("The value of the attribute '$key' is an array!", 1);
 			elseif(!is_null($value))
 				$html .= " ".$key."=\"".htmlentities($value)."\"";				
 		}
@@ -134,7 +134,7 @@ class HtmlBuilder{
 	}
 
 	function __toString(){
-		throw new Exception("HtmlBuilder Can not be used as a part of a string!", 1);
+		throw new \Exception("HtmlBuilder Can not be used as a part of a string!", 1);
 		
 	}
 
