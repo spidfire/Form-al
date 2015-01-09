@@ -10,27 +10,39 @@ class Checkbox extends Input{
 
 	function getValue(){
 		$submit = $this->getSubmitValue();
-		if($submit != null){
-			return empty($submit) ? $this->falseValue : $this->trueValue;
-		***REMOVED***else{
-			if( $this->value  != $this->trueValue)
+		$update = $this->getFormAl()->updatedValues();
+		$is_submitted = array_key_exists($this->getName()."_submitted", $update);
+
+		if(is_null($submit)){
+			if($is_submitted == true)
 				return $this->falseValue;
 			else
+				return $this->value;				
+		***REMOVED***else{
+			if(strcasecmp((string)$submit,(string)$this->trueValue) == 0)
 				return $this->trueValue;
+			else
+				return $this->falseValue;
 		***REMOVED***
 	***REMOVED***
 
 	function render(){
-		$e = new HtmlBuilder('input');
 		$checked = null;
 
 		if($this->getValue() == $this->trueValue)
 			$checked = 'checked';
 
+		$e = new HtmlBuilder('input');
 		$e->attr('type','checkbox')
 		  ->attr('name', $this->getName())
 		  ->attr('checked', $checked)
 		  ->attr('value', $this->trueValue);
-		return $e->render();
+
+		// hidden for submission check
+		$h = new HtmlBuilder('input');
+		$h->attr('type','hidden')
+		  ->attr('name', $this->getName()."_submitted")
+		  ->attr('value', 'yes');
+		return $e->render().$h->render();
 	***REMOVED***
 ***REMOVED***

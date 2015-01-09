@@ -36,8 +36,10 @@ class Autocomplete extends Input{
 			           ->attr('id',$uniquename.'_holder');
 		$jsexec = array();	       
 		foreach ($items as $key => $value) {
-			
-				$jsexec[] = $uniquename."add(".json_encode($this->options[$value['name']]).",".json_encode($value).");";
+				$name = json_encode($this->options[$value['name']]);
+				if($name == false)
+					$name = '"Onbekende naam: '.$value['name'].'"';
+				$jsexec[] = $uniquename."add(".$name.",".json_encode($value).");";
 				//$sub->addHtml('<button type="button" onclick=\'$(this).parent( "li" ).remove()\'>X</button>');
 		***REMOVED***
 		
@@ -131,7 +133,7 @@ class Autocomplete extends Input{
 				          "value": value["name"]
 				        ***REMOVED***)
 					 )
-					lihtml.append(name)
+					lihtml.append("<span class=\'autocompletetextholder\'>"+name+"</span>")
 					'.$extra_field_data.'
 
 					var button = "<a href=\"Javascript:void(0)\" onclick=\'$(this).parent().remove()\' > X</a>";

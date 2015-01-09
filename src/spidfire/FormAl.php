@@ -8,12 +8,16 @@ class FormAl extends FormAlAbstract{
 	const HIDE_ERRORS = false;
 	var $use_tabs = true;
 	var $tab_count = 0;
+	var $confirmtext = null;
 
 	function render($show_errors = true){
 		$form = HtmlBuilder::create('form')
 				->attr('method', 'POST')
 				->attr('id', $this->getName())
 				->attr('enctype', "multipart/form-data");
+
+		if(!is_null($this->confirmtext))
+			$form->attr('onsubmit', 'return window.confirm('.json_encode($this->confirmtext).');');
 
 		if($show_errors)				
 			if($this->hasErrors()){
@@ -45,8 +49,6 @@ class FormAl extends FormAlAbstract{
 				    ->addText($el->getLabel());
 					$holder = $div->add('div.col-sm-9');
 				***REMOVED***
-				
-				
 				
 				if($show_errors)	
 					foreach ($el->getErrors() as $err) {
@@ -84,8 +86,9 @@ class FormAl extends FormAlAbstract{
 		"jsoneditor" => "spidfire\Elements\JsonEditor",
 		"range" => "spidfire\Elements\Range",
 		"datepicker" => "spidfire\Elements\Datepicker",
-
-
+		"binarycheckboxes" => "spidfire\Elements\BinaryCheckboxes",
+		"imageuploadserver" => "spidfire\Elements\ImageUploadToServer",
+		"selectsteps" => "spidfire\Elements\SelectSteps",
 
 		"input" => "spidfire\Elements\Input",
 		"password" => "spidfire\Elements\Password",
@@ -95,7 +98,8 @@ class FormAl extends FormAlAbstract{
 		"text" => "spidfire\Elements\Text",
 		"title" => "spidfire\Elements\Title",
 		"customFields" => "spidfire\Elements\CustomFields",
+		"colorpicker" => "spidfire\Elements\Colorpicker",
+        "hidden" => "spidfire\Elements\Hidden",
+        "iconupload" => "spidfire\Elements\IconUpload"
 ***REMOVED***
-
-
 ***REMOVED***

@@ -9,7 +9,7 @@
 
     $f->select('gender')
       ->label("Geslacht")
-      ->values(array("m" => "Man", "f" => "Female"))  // (k = key, v = value, l = sublist name) can be [kv,kv] OR {k => v***REMOVED*** OR {l => {k => v***REMOVED******REMOVED*** OR  {l => [kv]***REMOVED***
+      ->values(array("m" => "Man", "f" => "Female"));  // (k = key, v = value, l = sublist name) can be [kv,kv] OR {k => v***REMOVED*** OR {l => {k => v***REMOVED******REMOVED*** OR  {l => [kv]***REMOVED***
 
 
     $f->hidden('insertTime')
@@ -22,8 +22,7 @@
 
     $f->datepicker('birthdate')
       ->label('Geboortedatum')
-      ->default(date('d-M-Y H:i:m'))
-      ->
+      ->default(date('d-M-Y H:i:m'));
 
     if(isset($_GET['id'])){
         $id = $f->remember($_GET['id']);
