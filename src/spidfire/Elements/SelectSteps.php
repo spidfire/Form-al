@@ -11,7 +11,7 @@ class SelectSteps extends Input{
 
   function render(){
     $e = new HtmlBuilder('div.select-row');
-    echo $this->getName();
+
     $e->addhtml('<script>
       function addStep(selected, value){
         var select = $(".selectedstep-" + selected);
