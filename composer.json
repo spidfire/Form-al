@@ -2,7 +2,7 @@
     "name": "spidfire/formal",
     "autoload": {
         "psr-4": {
-            "spidfire\\": "src/spidfire/"
+            "Formal\\": "src/FormAl/"
         }
     }
 
