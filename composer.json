@@ -1,9 +1,7 @@
 {
     "name": "spidfire/formal",
     "autoload": {
-        "psr-4": {
-            "Formal\\": "src/FormAl/"
-        }
+        "classmap": ["src/FormAl/"]
     }
 
 }
