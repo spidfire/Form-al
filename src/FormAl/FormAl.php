@@ -223,7 +223,7 @@ class FormAl extends FormAlAbstract
                     'div.form-actions.col-sm-offset-3.col-sm-9 formal-submit-element'
                 );
             ***REMOVED*** elseif ($element instanceof Markdown) {
-                $div = $parent->add('div.form-group.' . $element->getName());
+                $div = $parent->add('div.row.form-group.' . $element->getName());
 
                 if ($element->usesFullWidth()) {
                     $holder = $div->add('div.col-sm-offset-0');
@@ -231,12 +231,12 @@ class FormAl extends FormAlAbstract
                     $holder = $div->add('div.col-sm-offset-3');
                 ***REMOVED***
             ***REMOVED*** elseif ($element->usesFullWidth()) {
-                $div = $parent->add('div.form-group.' . $element->getName());
+                $div = $parent->add('div.row.form-group.' . $element->getName());
 
                 $holder = $div->add('div.col-sm');
             ***REMOVED*** else {
                 $div = $parent->add(
-                    'div.form-group.' . $element->getName()
+                    'div.row.form-group.' . $element->getName()
                 );
                 if ($element->isFolded()) {
                     $div->style("display:none;");
