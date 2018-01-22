@@ -39,18 +39,23 @@ class ValidURL extends ValidatorBase
      */
     public function validateInput($data, ElementBase $element)
     {
-        if (is_string($data)) {
-            if (strlen($data) == 0) {
+        if (\is_string($data)) {
+            if ($data === '') {
                 return true;
-            ***REMOVED*** elseif (filter_var($data, FILTER_VALIDATE_URL) !== false) {
-                return true;
-            ***REMOVED*** else {
-                $element->error($this->errorTitle, $this->errorText);
             ***REMOVED***
+
+            $data = isset(parse_url($data)['scheme'])
+                ? $data
+                : 'http://' . $data;
+            if (filter_var($data, FILTER_VALIDATE_URL) !== false) {
+                return true;
+            ***REMOVED***
+
+            $element->error($this->errorTitle, $this->errorText);
         ***REMOVED*** else {
             $element->error(
-                "Unkown data type",
-                "The type of this value is not a String"
+                'Unkown data type',
+                'The type of this value is not a string.'
             );
         ***REMOVED***
 
