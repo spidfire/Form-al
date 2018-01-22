@@ -16,7 +16,7 @@ use FormAl\Validators\ValidURL;
 class URL extends ElementBase
 {
     /** @var string */
-    public $type = "url";
+    public $type = "text";
     /** @var string */
     private $labelname = "";
 
