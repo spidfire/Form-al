@@ -219,11 +219,15 @@ class FormAl extends FormAlAbstract
             $this->renderFoldGroup($element, $parent);
         } else {
             if ($element instanceof Submit) {
-                $holder = $parent->add(
-                    'div.form-actions.col-sm-offset-3.col-sm-9 formal-submit-element'
-                );
+                $holder = $parent->add('div.form-actions.col-sm-offset-3.col-sm-9 formal-submit-element row.form-group.' . $element->getName());
+                if ($element->isFolded()) {
+                    $holder->style("display:none;");
+                }
             } elseif ($element instanceof Markdown) {
                 $div = $parent->add('div.row.form-group.' . $element->getName());
+                if ($element->isFolded()) {
+                    $div->style("display:none;");
+                }
 
                 if ($element->usesFullWidth()) {
                     $holder = $div->add('div.col-sm-offset-0');
@@ -232,6 +236,9 @@ class FormAl extends FormAlAbstract
                 }
             } elseif ($element->usesFullWidth()) {
                 $div = $parent->add('div.row.form-group.' . $element->getName());
+                if ($element->isFolded()) {
+                    $div->style("display:none;");
+                }
 
                 $holder = $div->add('div.col-sm');
             } else {
@@ -303,7 +310,6 @@ class FormAl extends FormAlAbstract
         $div = $row->add('div.col-sm-12 more-options.' . $foldgroup->getName());
         $div->attr("id", "navigation");
         $div->addHtml("+ " . $foldgroup->getLabel());
-        $div->style("color:white;");
 
         // Javascript to toggle all elements
         $jsName = "$('." . $foldgroup->getName() . "')";
