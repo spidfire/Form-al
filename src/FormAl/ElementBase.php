@@ -42,7 +42,9 @@ abstract class ElementBase
      */
     final public function getName()
     {
-        return $this->getFormAl()->getName() . $this->getUniqueName();
+        $name = $this->getFormAl()->getName() . $this->getUniqueName();
+
+        return preg_replace("/[^a-zA-Z0-9-]+/", "_", $name);
     ***REMOVED***
 
     /**
