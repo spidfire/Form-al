@@ -88,7 +88,7 @@ abstract class FormAlAbstract
             if ($element->markForExport == true) {
                 $name = $element->getUniqueName();
                 $value = $element->getValue();
-                if (empty($value)) {
+                if ($element->isEmpty()) {
                     $value = null;
                 }
                 $out[$name] = $value;
