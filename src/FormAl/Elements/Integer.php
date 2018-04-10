@@ -63,4 +63,12 @@ class Integer extends ElementBase
 
         return $this;
     ***REMOVED***
+
+    /**
+     * @return bool
+     */
+    public function isEmpty()
+    {
+        return $this->getValue() === null;
+    ***REMOVED***
 ***REMOVED***

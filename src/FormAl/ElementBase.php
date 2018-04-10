@@ -4,7 +4,6 @@ namespace FormAl;
 
 // TODO: Fix correct Markdown framework
 use Markdown;
-use FormAl\Utilities\HtmlBuilder;
 
 /**
  * Class ElementBase
@@ -131,6 +130,14 @@ abstract class ElementBase
         ***REMOVED***
 
         return $this;
+    ***REMOVED***
+
+    /**
+     * @return bool
+     */
+    public function isEmpty()
+    {
+        return empty($this->getValue());
     ***REMOVED***
 
     /**
