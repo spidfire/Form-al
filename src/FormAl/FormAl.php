@@ -307,7 +307,7 @@ class FormAl extends FormAlAbstract
         $row = $parent->add('div');
 
         // add small bar
-        $div = $row->add('div.col-sm-12 more-options.' . $foldgroup->getName());
+        $div = $row->add('div.col-sm-6 more-options.' . $foldgroup->getName());
         $div->attr("id", "navigation");
         $div->addHtml("+ " . $foldgroup->getLabel());
 
