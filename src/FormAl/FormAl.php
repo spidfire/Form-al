@@ -256,12 +256,6 @@ class FormAl extends FormAlAbstract
 
                 $this->renderMarkdownInfo($element, $label);
 
-                if (empty($element->getTooltip()) != true
-                    && !($element instanceof Checkbox)
-                ) {
-                    $label->add('small')->addText($element->getTooltip());
-                }
-
                 if ($this->showOptionalChecks) {
                     $check = $label->add('div.check-usage')->attr(
                         'style',
@@ -295,6 +289,10 @@ class FormAl extends FormAlAbstract
             }
             // $form->nl();
             $holder->addHtml($element->render());
+            if (!empty($element->getTooltip())) {
+                $div->add('div.col-sm-3.d-none.d-sm-block');
+                $div->add('div.col-sm-9')->addText($element->getTooltip());
+            }
         }
     }
 
