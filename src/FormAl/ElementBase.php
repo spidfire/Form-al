@@ -104,7 +104,16 @@ abstract class ElementBase
         $this->validators[] = $validator;
 
         return $this;
-    ***REMOVED***
+    ***REMOVED***    
+    
+    /**
+     * @return $this
+     */
+    public function clearValidators(){
+        $this->validators = [];
+
+        return $this;
+    ***REMOVED***    
 
     abstract public function render();
 
