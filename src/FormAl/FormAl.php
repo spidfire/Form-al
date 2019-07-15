@@ -152,7 +152,8 @@ class FormAl extends FormAlAbstract
                 'class',
                 'form-horizontal approvalform form-bordered'
             )
-            ->attr('enctype', "multipart/form-data");
+            ->attr('enctype', "multipart/form-data")
+			->attr('autocomplete', 'off');
 
         if (!is_null($this->confirmtext)) {
             $form->attr(
