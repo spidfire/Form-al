@@ -30,6 +30,9 @@ class MinLength extends ValidatorBase
      */
     public function validateInput($data, ElementBase $element)
     {
+        if(empty($this->minlength)) {
+            return true;
+        }
         if (is_string($data)) {
             if (strlen($data) >= $this->minlength) {
                 return true;
