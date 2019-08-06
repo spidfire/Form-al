@@ -30,6 +30,9 @@ class MaxLength extends ValidatorBase
      */
     public function validateInput($data, ElementBase $element)
     {
+        if(empty($this->maxLength)) {
+            return true;
+        ***REMOVED***
         if (is_string($data)) {
             if (strlen($data) <= $this->maxLength) {
                 return true;
