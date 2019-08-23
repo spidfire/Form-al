@@ -21,6 +21,8 @@ class Input extends ElementBase
 
     /** @var int */
     private $maxLength = null;
+    /** @var bool */
+    private $isRequired = false;
 
     const DEFAULT_MAX_LENGTH = 128;
 
@@ -41,7 +43,34 @@ class Input extends ElementBase
      */
     public function getLabel()
     {
-        return $this->labelname;
+        if ($this->isRequired()) {
+            return $this->labelname . '*';
+        ***REMOVED*** else {
+            return $this->labelname;
+        ***REMOVED***
+    ***REMOVED***
+
+    /**
+     * @return bool
+     */
+    public function isRequired()
+    {
+        return $this->isRequired;
+    ***REMOVED***
+
+    /**
+     * @param bool $isRequired
+     */
+    public function setIsRequired($isRequired = true)
+    {
+        $this->isRequired = $isRequired;
+    ***REMOVED***
+
+    public function notNull()
+    {
+        $this->setIsRequired();
+
+        return parent::notNull();
     ***REMOVED***
 
     /**
