@@ -17,6 +17,8 @@ class Datepicker extends ElementBase
     public $type = "text";
     /** @var string */
     private $labelname = "";
+    /** @var bool */
+    private $isRequired = false;
 
     /**
      * @param string $text
@@ -35,7 +37,34 @@ class Datepicker extends ElementBase
      */
     public function getLabel()
     {
-        return $this->labelname;
+        if ($this->isRequired()) {
+            return $this->labelname . '*';
+        } else {
+            return $this->labelname;
+        }
+    }
+
+    /**
+     * @return bool
+     */
+    public function isRequired()
+    {
+        return $this->isRequired;
+    }
+
+    /**
+     * @param bool $isRequired
+     */
+    public function setIsRequired($isRequired = true)
+    {
+        $this->isRequired = $isRequired;
+    }
+
+    public function notNull()
+    {
+        $this->setIsRequired();
+
+        return parent::notNull();
     }
 
     /**
