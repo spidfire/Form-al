@@ -292,7 +292,7 @@ class FormAl extends FormAlAbstract
             $holder->addHtml($element->render());
             if (!empty($element->getTooltip())) {
                 $div->add('div.col-sm-3.d-none.d-sm-block');
-                $div->add('div.col-sm-9')->addText($element->getTooltip());
+                $div->add('div.col-sm-9')->addHtml($element->getTooltip());
             ***REMOVED***
         ***REMOVED***
     ***REMOVED***
