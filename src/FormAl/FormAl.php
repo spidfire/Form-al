@@ -252,7 +252,7 @@ class FormAl extends FormAlAbstract
                 $label = $div->add('label.col-sm-3.control-label')
                     ->addText($element->getLabel());
                 $label->attr("id", 'i' . $element->getName());
-                $label->attr("title", " ");
+                $label->attr("title", $element->getTooltip());
                 $label->style("text-align:right;");
 
                 $this->renderMarkdownInfo($element, $label);
@@ -290,10 +290,6 @@ class FormAl extends FormAlAbstract
             ***REMOVED***
             // $form->nl();
             $holder->addHtml($element->render());
-            if (!empty($element->getTooltip())) {
-                $div->add('div.col-sm-3.d-none.d-sm-block');
-                $div->add('div.col-sm-9')->addHtml($element->getTooltip());
-            ***REMOVED***
         ***REMOVED***
     ***REMOVED***
 
