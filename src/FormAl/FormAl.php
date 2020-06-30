@@ -77,6 +77,8 @@ use FormAl\Utilities\HtmlBuilder;
  */
 class FormAl extends FormAlAbstract
 {
+
+    public static $oldStyleTooltips = false;
     const SHOW_ERRORS = true;
     const HIDE_ERRORS = false;
     /** @var bool */
@@ -290,6 +292,12 @@ class FormAl extends FormAlAbstract
             }
             // $form->nl();
             $holder->addHtml($element->render());
+            if (static::$oldStyleTooltips) {
+                if (!empty($element->getTooltip())) {
+                    $div->add('div.col-sm-3.d-none.d-sm-block');
+                    $div->add('div.col-sm-9')->addHtml($element->getTooltip());
+                }
+            }
         }
     }
 
