@@ -101,6 +101,30 @@ class Datepicker extends ElementBase
                     lang:'".$lang."',
                     format:'d-m-Y H:i',
                 });
+                
+            if (moment && typeof moment === 'function') {
+                $('#" . $this->getName() . "').change(function () {
+                    var object = $('#" . $this->getName() . "');
+                    var alternativeFormat = 'DD-MM-YYYY HH.mm';
+                    var value = object.val();
+                    var start = moment(value, alternativeFormat);
+                    endString = start.format('DD-MM-YYYY HH:mm');
+
+                    if(value == start.format(alternativeFormat)) {
+                        object.val(endString);
+                    }
+
+                    var alternativeFormat = 'DD.MM.YYYY HH:mm';
+                    var value = object.val();
+                    var start = moment(value, alternativeFormat);
+                    endString = start.format('DD-MM-YYYY HH:mm');
+
+                    if(value == start.format(alternativeFormat)) {
+                        object.val(endString);
+                    }
+
+                });
+            }
             </script>"
         );
 
