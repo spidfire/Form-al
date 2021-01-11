@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Validators;
 
@@ -31,7 +31,7 @@ class ValidPhoneNumber extends ValidatorBase
         $this->errorText = $error;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param string $number
@@ -44,15 +44,15 @@ class ValidPhoneNumber extends ValidatorBase
         if (is_string($number)) {
             if (strlen($number) == 0) {
                 return true;
-            ***REMOVED***
+            }
 
             $phoneUtil = PhoneNumberUtil::getInstance();
 
             $parsedNum = null;
             try {
                 $parsedNum = $phoneUtil->parse($number, "NL");
-            ***REMOVED*** catch (NumberParseException $e) {
-            ***REMOVED***
+            } catch (NumberParseException $e) {
+            }
 
             // ParsedNum should not be empty and should be a valid number.
             if (empty($parsedNum) || !$phoneUtil->isValidNumber($parsedNum)) {
@@ -60,14 +60,14 @@ class ValidPhoneNumber extends ValidatorBase
                     trans($this->errorTitle),
                     trans($this->errorText)
                 );
-            ***REMOVED***
-        ***REMOVED*** else {
+            }
+        } else {
             $element->error(
                 "Unkown data type",
                 "The type of this value is not a String"
             );
-        ***REMOVED***
+        }
 
         return false;
-    ***REMOVED***
-***REMOVED***
+    }
+}

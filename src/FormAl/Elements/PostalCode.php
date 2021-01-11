@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -21,5 +21,5 @@ class PostalCode extends Input
         parent::__construct($name, $formal);
 
         $this->addValidator(new ValidPostalCode());
-    ***REMOVED***
-***REMOVED***
+    }
+}

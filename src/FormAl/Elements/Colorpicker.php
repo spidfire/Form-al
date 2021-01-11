@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -28,7 +28,7 @@ class Colorpicker extends ElementBase
         $this->labelname = $text;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -36,7 +36,7 @@ class Colorpicker extends ElementBase
     public function getLabel()
     {
         return $this->labelname;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -73,7 +73,7 @@ class Colorpicker extends ElementBase
         );
 
         return $element->render();
-    ***REMOVED***
+    }
 
     /**
      * @param int $length
@@ -85,5 +85,5 @@ class Colorpicker extends ElementBase
         $this->addValidator(new MinLength($length));
 
         return $this;
-    ***REMOVED***
-***REMOVED***
+    }
+}

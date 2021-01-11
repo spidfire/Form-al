@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -24,7 +24,7 @@ class Select extends Input
         $this->options = $options;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -38,7 +38,7 @@ class Select extends Input
         $this->optGroups($element, $this->options);
 
         return $element->render();
-    ***REMOVED***
+    }
 
     /**
      * @param HtmlBuilder $builder
@@ -51,7 +51,7 @@ class Select extends Input
                 $sub = $builder->add('optgroup')
                     ->attr('label', $key);
                 $this->optGroups($sub, $value);
-            ***REMOVED*** else {
+            } else {
                 $builder->add('option')
                     ->attr('value', $key)
                     ->attr(
@@ -59,7 +59,7 @@ class Select extends Input
                         ($key == $this->getValue() ? 'selected' : null)
                     )
                     ->addText($value);
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
-***REMOVED***
+            }
+        }
+    }
+}

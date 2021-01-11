@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Validators;
 
@@ -29,7 +29,7 @@ class ValidPostalCode extends ValidatorBase
         $this->errorText = $error;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param string $number
@@ -42,7 +42,7 @@ class ValidPostalCode extends ValidatorBase
         if (is_string($postalCode)) {
             if (strlen($postalCode) == 0) {
                 return true;
-            ***REMOVED***
+            }
 
             if (trans('regexp-validate-postal-code')
                 == 'regexp-validate-postal-code'
@@ -52,19 +52,19 @@ class ValidPostalCode extends ValidatorBase
                 )
             ) {
                 return true;
-            ***REMOVED***
+            }
 
             $element->error(
                 trans($this->errorTitle),
                 trans($this->errorText)
             );
-        ***REMOVED*** else {
+        } else {
             $element->error(
                 "Unkown data type",
                 "The type of this value is not a String"
             );
-        ***REMOVED***
+        }
 
         return false;
-    ***REMOVED***
-***REMOVED***
+    }
+}

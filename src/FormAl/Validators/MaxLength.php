@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Validators;
 
@@ -20,7 +20,7 @@ class MaxLength extends ValidatorBase
     public function __construct($length)
     {
         $this->maxLength = $length;
-    ***REMOVED***
+    }
 
     /**
      * @param string      $data
@@ -32,11 +32,11 @@ class MaxLength extends ValidatorBase
     {
         if(empty($this->maxLength)) {
             return true;
-        ***REMOVED***
+        }
         if (is_string($data)) {
             if (strlen($data) <= $this->maxLength) {
                 return true;
-            ***REMOVED*** else {
+            } else {
                 $element->error(
                     trans("Error"),
                     trans(
@@ -44,14 +44,14 @@ class MaxLength extends ValidatorBase
                         $this->maxLength
                     )
                 );
-            ***REMOVED***
-        ***REMOVED*** else {
+            }
+        } else {
             $element->error(
                 "Onbekende inhoud",
                 "De inhoud van dit veld is niet correct. (max lengte check)"
             );
-        ***REMOVED***
+        }
 
         return false;
-    ***REMOVED***
-***REMOVED***
+    }
+}

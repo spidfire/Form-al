@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Validators;
 
@@ -28,18 +28,18 @@ class MinFileSize extends ValidatorBase
         if (is_string($data)) {
             if (filesize($data) < 1024 * 1024) {
                 return true;
-            ***REMOVED*** else {
+            } else {
                 $element->error($this->transEmpty, $this->transEmptyText);
-            ***REMOVED***
-        ***REMOVED*** elseif (is_null($data)) {
+            }
+        } elseif (is_null($data)) {
             $element->error($this->transEmpty, $this->transEmptyText);
-        ***REMOVED*** else {
+        } else {
             $element->error(
                 "Onbekende inhoud",
                 "De inhoud van dit veld is niet correct. (is null)"
             );
-        ***REMOVED***
+        }
 
         return false;
-    ***REMOVED***
-***REMOVED***
+    }
+}

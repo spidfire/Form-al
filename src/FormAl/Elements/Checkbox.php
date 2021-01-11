@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -31,17 +31,17 @@ class Checkbox extends Input
         if (is_null($submit)) {
             if ($isSubmitted == true) {
                 return $this->falseValue;
-            ***REMOVED*** else {
+            } else {
                 return $this->value;
-            ***REMOVED***
-        ***REMOVED*** else {
+            }
+        } else {
             if (strcasecmp((string)$submit, (string)$this->trueValue) == 0) {
                 return $this->trueValue;
-            ***REMOVED*** else {
+            } else {
                 return $this->falseValue;
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
     /**
      * @return string
@@ -53,7 +53,7 @@ class Checkbox extends Input
 
         if ($this->getValue() == $this->trueValue) {
             $checked = 'checked';
-        ***REMOVED***
+        }
 
         $element = new HtmlBuilder('input');
         $element->attr('type', 'checkbox')
@@ -65,7 +65,7 @@ class Checkbox extends Input
         if (empty($this->getTooltip()) == false) {
             $tooltip = " " . $this->getTooltip();
             $this->setTooltip("");
-        ***REMOVED***
+        }
         // hidden for submission check
         $hidden = new HtmlBuilder('input');
         $hidden->attr('type', 'hidden')
@@ -73,5 +73,5 @@ class Checkbox extends Input
             ->attr('value', 'yes');
 
         return $element->render() . $tooltip . $hidden->render();
-    ***REMOVED***
-***REMOVED***
+    }
+}

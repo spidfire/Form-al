@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -29,7 +29,7 @@ class CustomFields extends Input
         ];
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param string $text
@@ -41,7 +41,7 @@ class CustomFields extends Input
         $this->buttonText = $text;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -58,13 +58,13 @@ class CustomFields extends Input
         $jsexec = [];
         foreach ($items as $value) {
             $jsexec[] = $uniquename . "add(" . json_encode($value) . ");";
-        ***REMOVED***
+        }
 
         $element->add('div')->attr('id', '' . $uniquename . '_autocompl');
         $element->add('button.btn.btn-primary')
             ->attr('type', 'button')
             ->addText($this->buttonText)
-            ->attr('onclick', '' . $uniquename . 'add({***REMOVED***)');
+            ->attr('onclick', '' . $uniquename . 'add({})');
         $element->add('noscript')->addText(
             "Sorry this function needs Javascript to work!"
         );
@@ -88,11 +88,11 @@ class CustomFields extends Input
                     . '+"][' . $field['name'] . ']",
                           "placeholder": "' . $field['placeholder'] . '",
                           "value": value["' . $field['name'] . '"] || ""
-                        ***REMOVED***));';
-            ***REMOVED***
-        ***REMOVED*** else {
+                        }));';
+            }
+        } else {
             $extraFieldData = "You need to add fields";
-        ***REMOVED***
+        }
 
         $script->addHtml(
             '
@@ -113,22 +113,22 @@ class CustomFields extends Input
                 $("#' . $uniquename . '_holder").html($("#' . $uniquename . '_holder").html() + lihtml)
 
                 id_' . $uniquename . '++;
-            ***REMOVED***
+            }
 
             $(function (){
                 ' . implode("\n", $jsexec) . '
 
-            ***REMOVED***)
+            })
             '
         );
 
         if (json_last_error() != JSON_ERROR_NONE) {
             throw new \Exception("JSON ERROR: " . json_last_error_msg(), 1);
-        ***REMOVED***
+        }
 
 
         return $element->render();
-    ***REMOVED***
+    }
 
     /**
      * @param array|string $dat
@@ -139,22 +139,22 @@ class CustomFields extends Input
     {
         if (is_string($dat)) {
             return utf8_encode($dat);
-        ***REMOVED***
+        }
         if (!is_array($dat)) {
             return $dat;
-        ***REMOVED***
+        }
         $ret = [];
         foreach ($dat as $i => $d) {
             $ret[$i] = $this->utf8EncodeAll($d);
-        ***REMOVED***
+        }
 
         return $ret;
-    ***REMOVED***
+    }
 
     public function setOptions($array = []){
         $this
             ->setButtonText(trans("Voeg een onbekend lid toe"))
             ->addField("naam", trans("Naam"))
             ->addField("functie", trans("Functie"));
-    ***REMOVED***
-***REMOVED***
+    }
+}

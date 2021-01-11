@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -39,13 +39,13 @@ class Textarea extends Input
             a.on("instanceReady",function() {
               // insert code to run after editor is ready
               $(".cke_wysiwyg_frame").css("display","")
-            ***REMOVED***);
+            });
 
             </script>';
-        ***REMOVED***
+        }
 
         return $element->render();
-    ***REMOVED***
+    }
 
     /**
      * @param bool $bool
@@ -57,7 +57,7 @@ class Textarea extends Input
         $this->fancy = $bool;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return bool $bool
@@ -65,7 +65,7 @@ class Textarea extends Input
     public function getFancy()
     {
         return $this->fancy;
-    ***REMOVED***
+    }
 
     /**
      * @param array $options
@@ -73,8 +73,8 @@ class Textarea extends Input
     public function setOptions($options){
         if (isset($options['setFancy'])) {
             $this->setFancy($options['setFancy']);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     /**
      * @return array
@@ -83,5 +83,5 @@ class Textarea extends Input
         $options = [];
         $options['setFancy'] = $this->getFancy();
         return $options;
-    ***REMOVED***
-***REMOVED***
+    }
+}

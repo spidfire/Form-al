@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 namespace FormAl;
 
 /**
@@ -25,7 +25,7 @@ abstract class FormAlAbstract
     public function __construct($name)
     {
         $this->uniquename = $name;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -33,7 +33,7 @@ abstract class FormAlAbstract
     final public function getName()
     {
         return preg_replace("/[^a-zA-Z0-9-]+/", "_", $this->uniquename);
-    ***REMOVED***
+    }
 
     /**
      * @param string $uniquename
@@ -41,7 +41,7 @@ abstract class FormAlAbstract
     public function setName($uniquename)
     {
         $this->uniquename = preg_replace("/[^a-zA-Z0-9-]+/", "_", $uniquename);
-    ***REMOVED***
+    }
 
     /**
      * @param ElementBase $element
@@ -52,10 +52,10 @@ abstract class FormAlAbstract
     {
         if ($this->phase != self::PHASE_SETUP) {
             throw new \Exception("Setup phase has ended", 1);
-        ***REMOVED***
+        }
 
         $this->elements[] = $element;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -63,7 +63,7 @@ abstract class FormAlAbstract
     public function exportForm()
     {
         return serialize($this);
-    ***REMOVED***
+    }
 
     /**
      * @param string $value
@@ -73,7 +73,7 @@ abstract class FormAlAbstract
     public function importForm($value)
     {
         return unserialize($value);
-    ***REMOVED***
+    }
 
     /**
      * @return array
@@ -82,7 +82,7 @@ abstract class FormAlAbstract
     {
         if ($this->phase == self::PHASE_SETUP) {
             $this->phase = self::PHASE_USAGE;
-        ***REMOVED***
+        }
         $out = [];
         foreach ($this->elements as $element) {
             if ($element->markForExport == true) {
@@ -90,13 +90,13 @@ abstract class FormAlAbstract
                 $value = $element->getValue();
                 if ($element->isEmpty()) {
                     $value = null;
-                ***REMOVED***
+                }
                 $out[$name] = $value;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return $out;
-    ***REMOVED***
+    }
 
     /**
      * @return array
@@ -107,11 +107,11 @@ abstract class FormAlAbstract
         foreach ($this->elements as $el) {
             foreach ($el->getErrors() as $e) {
                 $errors[] = $e;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return $errors;
-    ***REMOVED***
+    }
 
     /**
      * @return bool
@@ -119,7 +119,7 @@ abstract class FormAlAbstract
     public function hasErrors()
     {
         return count($this->getErrors()) > 0;
-    ***REMOVED***
+    }
 
     /**
      * @return bool
@@ -127,7 +127,7 @@ abstract class FormAlAbstract
     public function hasNoErrors()
     {
         return !$this->hasErrors();
-    ***REMOVED***
+    }
 
     /**
      * @return array
@@ -135,7 +135,7 @@ abstract class FormAlAbstract
     public function updatedValues()
     {
         return [];
-    ***REMOVED***
+    }
 
     /**
      * @param array $data
@@ -149,12 +149,12 @@ abstract class FormAlAbstract
                 //echo $el->getUniqueName() . "<br>";
                 if (isset($data[$el->getUniqueName()])) {
                     $el->setValue($data[$el->getUniqueName()]);
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED*** else {
+                }
+            }
+        } else {
             throw new \Exception("Form-Al Import is not using an array", 1);
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     /**
      * @return ElementBase[]
@@ -162,7 +162,7 @@ abstract class FormAlAbstract
     public function getElements()
     {
         return $this->elements;
-    ***REMOVED***
+    }
 
     /**
      * @param string $name
@@ -175,10 +175,10 @@ abstract class FormAlAbstract
         foreach ($this->elements as $element) {
             if ($element->getUniqueName() == $name) {
                 return $element;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         throw new \Exception("This element does not exist", 1);
-    ***REMOVED***
+    }
 
     /**
      * @param string $type
@@ -191,10 +191,10 @@ abstract class FormAlAbstract
         foreach ($this->elements as $element) {
             if (stristr(get_class($element), $type) !== false) {
                 return $element;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         throw new \Exception("This element does not exist", 1);
-    ***REMOVED***
+    }
 
     abstract public function render();
 
@@ -204,7 +204,7 @@ abstract class FormAlAbstract
     public function getAbstract()
     {
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param string $name
@@ -220,23 +220,23 @@ abstract class FormAlAbstract
             $args[0] = isset($args[0]) ? $args[0] : false;
             if (count($args) == 0) {
                 $element = new $className($this);
-            ***REMOVED*** elseif (count($args) == 1) {
+            } elseif (count($args) == 1) {
                 $element = new $className($args[0], $this);
-            ***REMOVED*** elseif (count($args) == 2) {
+            } elseif (count($args) == 2) {
                 $element = new $className($args[0], $args[1], $this);
-            ***REMOVED*** elseif (count($args) == 3) {
+            } elseif (count($args) == 3) {
                 $element = new $className($args[0], $args[1], $args[2], $this);
-            ***REMOVED*** else {
+            } else {
                 throw new \Exception("invalid amount of arguments in $name");
-            ***REMOVED***
+            }
 
             $this->addElement($element);
 
             return $element;
-        ***REMOVED*** else {
+        } else {
             throw new \Exception(
                 "The function $name is not found on this class"
             );
-        ***REMOVED***
-    ***REMOVED***
-***REMOVED***
+        }
+    }
+}

@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -20,6 +20,13 @@ class Datepicker extends ElementBase
     /** @var bool */
     private $isRequired = false;
 
+    /** @var bool */
+    private $isDisabled = false;
+
+    public function setDisabled(bool $disabled){
+        $this->isDisabled = $disabled;
+    }
+
     /**
      * @param string $text
      *
@@ -30,7 +37,7 @@ class Datepicker extends ElementBase
         $this->labelname = $text;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -39,10 +46,10 @@ class Datepicker extends ElementBase
     {
         if ($this->isRequired()) {
             return $this->labelname . '*';
-        ***REMOVED*** else {
+        } else {
             return $this->labelname;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     /**
      * @return bool
@@ -50,7 +57,7 @@ class Datepicker extends ElementBase
     public function isRequired()
     {
         return $this->isRequired;
-    ***REMOVED***
+    }
 
     /**
      * @param bool $isRequired
@@ -58,14 +65,14 @@ class Datepicker extends ElementBase
     public function setIsRequired($isRequired = true)
     {
         $this->isRequired = $isRequired;
-    ***REMOVED***
+    }
 
     public function notNull()
     {
         $this->setIsRequired();
 
         return parent::notNull();
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -78,19 +85,23 @@ class Datepicker extends ElementBase
             ->attr('name', $this->getName())
             ->attr('id', $this->getName());
 
+        if($this->isDisabled){
+            $element->attr('disabled', 'disabled');
+        }
+
         $dateStr = $this->getValue();
         if ($dateStr instanceof \DateTime) {
             $dateStr = $dateStr->format("d-m-Y H:i");
-        ***REMOVED***
+        }
         $element->attr('value', $dateStr);
         //->attr('style', 'height: 32px; width: 400px;');
 
         if (isset($_COOKIE['lang'])) {
             $lang = explode('_', $_COOKIE['lang']);
             $lang = $lang[0];
-        ***REMOVED*** else {
+        } else {
             $lang = 'en';
-        ***REMOVED***
+        }
         $element->addHtml(
             "<script>$('#" . $this->getName()
             . "').datetimepicker({
@@ -100,7 +111,7 @@ class Datepicker extends ElementBase
                     timepicker:true,
                     lang:'".$lang."',
                     format:'d-m-Y H:i',
-                ***REMOVED***);
+                });
                 
             if (moment && typeof moment === 'function') {
                 $('#" . $this->getName() . "').change(function () {
@@ -112,7 +123,7 @@ class Datepicker extends ElementBase
 
                     if(value == start.format(alternativeFormat)) {
                         object.val(endString);
-                    ***REMOVED***
+                    }
 
                     var alternativeFormat = 'DD.MM.YYYY HH:mm';
                     var value = object.val();
@@ -121,15 +132,15 @@ class Datepicker extends ElementBase
 
                     if(value == start.format(alternativeFormat)) {
                         object.val(endString);
-                    ***REMOVED***
+                    }
 
-                ***REMOVED***);
-            ***REMOVED***
+                });
+            }
             </script>"
         );
 
         return $element->render();
-    ***REMOVED***
+    }
 
     /**
      * @param int $length
@@ -141,5 +152,5 @@ class Datepicker extends ElementBase
         $this->addValidator(new MinLength($length));
 
         return $this;
-    ***REMOVED***
-***REMOVED***
+    }
+}

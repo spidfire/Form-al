@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -28,7 +28,7 @@ class URL extends ElementBase
     {
         parent::__construct($name, $formal);
         $this->addValidator(new ValidURL());
-    ***REMOVED***
+    }
 
     /**
      * @param string $text
@@ -40,7 +40,7 @@ class URL extends ElementBase
         $this->labelname = $text;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -48,7 +48,7 @@ class URL extends ElementBase
     public function getLabel()
     {
         return $this->labelname;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -62,7 +62,7 @@ class URL extends ElementBase
             ->attr('value', $this->getValue());
 
         return $element->render();
-    ***REMOVED***
+    }
 
     /**
      * @param int $length
@@ -74,5 +74,5 @@ class URL extends ElementBase
         $this->addValidator(new MinLength($length));
 
         return $this;
-    ***REMOVED***
-***REMOVED***
+    }
+}

@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -29,7 +29,7 @@ class Text extends ElementBase
         $name = md5($this->getName());
 
         return isset($updateArray[$name]);
-    ***REMOVED***
+    }
 
     /**
      * @param string $text
@@ -41,7 +41,7 @@ class Text extends ElementBase
         $this->text = $text;
         
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -49,7 +49,7 @@ class Text extends ElementBase
     public function render()
     {
         return $this->text;
-    ***REMOVED***
+    }
 
 
     /**
@@ -57,7 +57,7 @@ class Text extends ElementBase
      */
     public function setOptions($options) {
         $this->setText($options["setText"]);
-    ***REMOVED***
+    }
 
     /**
      * @return array
@@ -66,5 +66,5 @@ class Text extends ElementBase
         $options = [];
         $options['setText'] = $this->text;
         return $options;
-    ***REMOVED***
-***REMOVED***
+    }
+}

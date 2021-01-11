@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -26,7 +26,7 @@ class Chosen extends Input
         $this->options = $options;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param array $selected
@@ -38,7 +38,7 @@ class Chosen extends Input
         $this->selected = $selected;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**+
      * @return string
@@ -56,7 +56,7 @@ class Chosen extends Input
         return $element->render() . "<script type='text/javascript'>
         $(\".chosen-select\").chosen();
         </script>";
-    ***REMOVED***
+    }
 
     /**
      * @param HtmlBuilder $element
@@ -69,7 +69,7 @@ class Chosen extends Input
                 $sub = $element->add('optgroup')
                     ->attr('label', $key);
                 $this->optGroups($sub, $value);
-            ***REMOVED*** else {
+            } else {
                 $element->add('option')
                     ->attr('value', $key)
                     ->attr(
@@ -77,7 +77,7 @@ class Chosen extends Input
                         in_array($key, $this->selected) ? "checked" : null
                     )
                     ->addText($value);
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
-***REMOVED***
+            }
+        }
+    }
+}

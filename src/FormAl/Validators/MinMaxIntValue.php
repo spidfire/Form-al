@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Validators;
 
@@ -33,7 +33,7 @@ class MinMaxIntValue extends ValidatorBase
     {
         $this->minvalue = $min;
         $this->maxvalue = $max;
-    ***REMOVED***
+    }
 
     /**
      * @param int         $data
@@ -47,27 +47,27 @@ class MinMaxIntValue extends ValidatorBase
             $data = (int)$data;
             if ($data >= $this->minvalue && $data <= $this->maxvalue) {
                 return true;
-            ***REMOVED*** else {
+            } else {
                 if ($data < $this->minvalue) {
                     $element->error(
                         $this->errorLowTitle,
                         sprintf($this->errorLowText, $this->minvalue)
                     );
-                ***REMOVED*** else {
+                } else {
                     $element->error(
                         $this->errorHighTitle,
                         sprintf($this->errorHighText, $this->maxvalue)
                     );
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED*** else {
+                }
+            }
+        } else {
             $element->error(
                 "Onbekende inhoud",
                 "De inhoud van dit veld is niet correct. (min lengte check)"
             );
-        ***REMOVED***
+        }
 
         return false;
-    ***REMOVED***
-***REMOVED***
+    }
+}
 

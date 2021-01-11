@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -34,7 +34,7 @@ class Autocomplete extends Input
         $this->options = $options;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param string $placeholder
@@ -46,7 +46,7 @@ class Autocomplete extends Input
         $this->placeholder = $placeholder;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param string $name
@@ -64,7 +64,7 @@ class Autocomplete extends Input
         ];
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * Message to show when the user tries to add an item to the list of selected
@@ -81,7 +81,7 @@ class Autocomplete extends Input
         $this->duplicateMessage = $duplicateMessage;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return mixed
@@ -98,13 +98,13 @@ class Autocomplete extends Input
         if (is_null($submit)) {
             if ($isSubmitted == true) {
                 return [];
-            ***REMOVED*** else {
+            } else {
                 return $this->value;
-            ***REMOVED***
-        ***REMOVED*** else {
+            }
+        } else {
             return $submit;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     /**
      * @return string
@@ -124,16 +124,16 @@ class Autocomplete extends Input
             $name = "";
             if (isset($value['name']) && isset($this->options[$value['name']])) {
                 $name = $this->options[$value['name']];
-            ***REMOVED***
+            }
             if (empty($name)) {
                 $name = '"Onbekende naam: ' . $value['name'] . '"';
-            ***REMOVED***
+            }
 
             $name = htmlspecialchars($name);
 
             $jsexec[] = $uniquename . "add(\"" . $name . "\"," . json_encode($value)
                 . ");";
-        ***REMOVED***
+        }
 
         $element->add('input.form-control.searchbox')
             ->attr('id', $uniquename . "_id")
@@ -166,14 +166,14 @@ class Autocomplete extends Input
                           "placeholder": "' . $field['placeholder'] . '",
                           "value": value["' . $field['name'] . '"],
                           "maxlength": "' . $field['maxlength'] . '"
-                        ***REMOVED***));';
-            ***REMOVED***
-        ***REMOVED***
+                        }));';
+            }
+        }
 
         $options = [];
         foreach ($this->options as $key => $value) {
             $options[$key] = htmlentities($value);
-        ***REMOVED***
+        }
 
         $addButtonText = $this->addButtonText;
         $name = $this->getName();
@@ -182,99 +182,99 @@ class Autocomplete extends Input
 
         $duplicateCheck = "";
         if (!empty($this->duplicateMessage)) {
-            $duplicateCheck = "if ($.inArray(name, {$uniquename***REMOVED***_names) > -1) {
+            $duplicateCheck = "if ($.inArray(name, {$uniquename}_names) > -1) {
                     toastr.error('" . trans($this->duplicateMessage) . "');
                     return;
-                ***REMOVED***";
-        ***REMOVED***
+                }";
+        }
 
         $script->addHtml(
-            "var {$uniquename***REMOVED***_names = [];
-            var {$uniquename***REMOVED***_items = {$encodedOptions***REMOVED***;
-            function {$uniquename***REMOVED***(search,index){
+            "var {$uniquename}_names = [];
+            var {$uniquename}_items = {$encodedOptions};
+            function {$uniquename}(search,index){
                 var count = 0;
                 var searchparts = search.toLowerCase().split(' ');
-                var elm = jQuery('#{$uniquename***REMOVED***_autocompl');
+                var elm = jQuery('#{$uniquename}_autocompl');
                 elm.html('');
                 if(search.trim().length == 0) {
                     return;
-                ***REMOVED***
+                }
 
-                for(var i in {$uniquename***REMOVED***_items) {
-                    var v= {$uniquename***REMOVED***_items[i];
+                for(var i in {$uniquename}_items) {
+                    var v= {$uniquename}_items[i];
                     var partnotfound = true;
                     for(var p in searchparts) {
                         if(v.toLowerCase().indexOf(searchparts[p]) < 0) {
                             partnotfound = false
-                        ***REMOVED***
-                    ***REMOVED***
+                        }
+                    }
                     if(partnotfound == true){
                         var item = $('<li/>').css('list-style','none');
                         item.addClass('autoadd');
                         item.append(
-                            $('<button/>').text('{$addButtonText***REMOVED***')
+                            $('<button/>').text('{$addButtonText}')
                             .addClass('btn').addClass('btn-primary')
                             .attr('id', 'but-' + count)
                             .attr('type','button').attr('title',v)
                             .attr('val',i).click(function () {
-                                {$uniquename***REMOVED***add(
+                                {$uniquename}add(
                                     $(this).attr('title'),
-                                    {name:$(this).attr('val')***REMOVED***
+                                    {name:$(this).attr('val')}
                                 );
                                 elm.html('');
-                                $('#{$uniquename***REMOVED***_id').val('');
-                            ***REMOVED***)
+                                $('#{$uniquename}_id').val('');
+                            })
                         );
                         item.append('&nbsp;&nbsp;');
                         item.append(v);
                         elm.append(item);
                         count++;
-                    ***REMOVED***
+                    }
 
                     if(count > 10) {
                         break;
-                    ***REMOVED***
-                ***REMOVED***
+                    }
+                }
                 if (count == 0) {
                     elm.append('Geen resultaten');
-                ***REMOVED***
-            ***REMOVED***
-            var  id_{$uniquename***REMOVED*** = 0;
-            function {$uniquename***REMOVED***add(name, value) {
-                {$duplicateCheck***REMOVED***
+                }
+            }
+            var  id_{$uniquename} = 0;
+            function {$uniquename}add(name, value) {
+                {$duplicateCheck}
 
                 var lihtml = $('<li/>');
 
                 lihtml.append(
                     $('<input/>').attr({
                         'type': 'hidden',
-                        'name': '{$name***REMOVED***[' + id_{$uniquename***REMOVED*** + '][name]',
+                        'name': '{$name}[' + id_{$uniquename} + '][name]',
                         'value': value['name']
-                    ***REMOVED***)
+                    })
                 );
                 lihtml.append('<div class=\'autocompletetextholder form-control\' style=\'display:inline-block; width:40%; border:none;\'>' + name + '</div>')
-                     {$extraFieldData***REMOVED***
+                     {$extraFieldData}
 
                 var button = '<a name=\'xbut\' href=\'Javascript:void(0)\' '
                     + 'onclick=\'$(this).parent().remove()\' > X</a>';
                 lihtml.append(button);
 
                 lihtml = '<li>' + lihtml.html() + '</li>';
-                $('#{$uniquename***REMOVED***_holder').html($('#{$uniquename***REMOVED***_holder').html() + lihtml);
+                $('#{$uniquename}_holder').html($('#{$uniquename}_holder').html() + lihtml);
 
-                id_{$uniquename***REMOVED***++;
+                id_{$uniquename}++;
 
-                {$uniquename***REMOVED***_names.push(name);
-            ***REMOVED***
+                {$uniquename}_names.push(name);
+            }
 
             $(function () {
-                {$jsExecString***REMOVED***
-            ***REMOVED***);"
+                {$jsExecString}
+            });"
         );
 
         if (json_last_error() != JSON_ERROR_NONE) {
             throw new \Exception("JSON ERROR: " . json_last_error_msg(), 1);
-        ***REMOVED***
+        }
 
         // hidden for submission check
         $hidden = new HtmlBuilder('input');
@@ -283,7 +283,7 @@ class Autocomplete extends Input
             ->attr('value', 'yes');
 
         return $element->render() . $hidden->render();
-    ***REMOVED***
+    }
 
     /**
      * @param $dat
@@ -294,17 +294,17 @@ class Autocomplete extends Input
     {
         if (is_string($dat)) {
             return utf8_encode($dat);
-        ***REMOVED***
+        }
         if (!is_array($dat)) {
             return $dat;
-        ***REMOVED***
+        }
         $ret = [];
         foreach ($dat as $i => $d) {
             $ret[$i] = $this->utf8EncodeAll($d);
-        ***REMOVED***
+        }
 
         return $ret;
-    ***REMOVED***
+    }
 
     /**
      * @inheritdoc
@@ -315,5 +315,5 @@ class Autocomplete extends Input
             ->options($array)
             ->setPlaceholder(trans("Zoek naar leden"))
             ->addField("functie", trans("Functie"));
-    ***REMOVED***
-***REMOVED***
+    }
+}

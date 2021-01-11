@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -31,7 +31,7 @@ class RangeInput extends ElementBase
         $this->labelname = $label;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -39,7 +39,7 @@ class RangeInput extends ElementBase
     public function getLabel()
     {
         return $this->labelname;
-    ***REMOVED***
+    }
 
     /**
      * @param string $value
@@ -51,7 +51,7 @@ class RangeInput extends ElementBase
         $this->value = $value;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -91,10 +91,10 @@ class RangeInput extends ElementBase
                 "
                 function updateRangeOutput_" . $uniquename . "(value) {
                     document.getElementById('" . $uniquename . "_rangeoutput" . "').value = value + '%'; 
-                ***REMOVED***
+                }
             "
             );
 
         return $element->render();
-    ***REMOVED***
-***REMOVED***
+    }
+}

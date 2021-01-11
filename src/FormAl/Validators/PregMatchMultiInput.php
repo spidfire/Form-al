@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 namespace FormAl\Validators;
 
 use FormAl\ElementBase;
@@ -24,7 +24,7 @@ class PregMatchMultiInput extends ValidatorBase
     public function __construct($regex)
     {
         $this->regex = $regex;
-    ***REMOVED***
+    }
 
     /**
      * @return array
@@ -32,7 +32,7 @@ class PregMatchMultiInput extends ValidatorBase
     public function getResults()
     {
         return $this->results;
-    ***REMOVED***
+    }
 
     /**
      * @param string $title
@@ -46,7 +46,7 @@ class PregMatchMultiInput extends ValidatorBase
         $this->errorText = $error;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param string      $data
@@ -62,16 +62,16 @@ class PregMatchMultiInput extends ValidatorBase
                 if (!preg_match($this->regex, $elementData, $this->results)) {
                     $element->error($this->errorTitle, $this->errorText);
                     return false;
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
             return true;
-        ***REMOVED*** else {
+        } else {
             $element->error(
                 "Unkown data type",
                 "The type of this value is not a String"
             );
-        ***REMOVED***
+        }
 
         return false;
-    ***REMOVED***
-***REMOVED***
+    }
+}

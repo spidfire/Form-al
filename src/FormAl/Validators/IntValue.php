@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Validators;
 
@@ -29,10 +29,10 @@ class IntValue extends ValidatorBase
     {
         if (!is_int($data) && !ctype_digit($data)) {
             $element->error($this->errorTitle, $this->errorText);
-        ***REMOVED*** else {
+        } else {
             return true;
-        ***REMOVED***
+        }
 
         return false;
-    ***REMOVED***
-***REMOVED***
+    }
+}

@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -32,7 +32,7 @@ class MultiInput extends Input
         $this->emptyFields = $emptyFields;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param int $maxFields
@@ -44,11 +44,11 @@ class MultiInput extends Input
         $this->maxFields = $maxFields;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * Override
-     * Example of $value: {0: [34, "Yes"], 1: [35, "No"]***REMOVED***
+     * Example of $value: {0: [34, "Yes"], 1: [35, "No"]}
      * Or regular ["Yes", "No"]
      *
      * @param array $value
@@ -60,7 +60,7 @@ class MultiInput extends Input
         $this->inputValues = $value;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param string $text
@@ -72,7 +72,7 @@ class MultiInput extends Input
         $this->buttonText = $text;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return array
@@ -82,10 +82,10 @@ class MultiInput extends Input
         $submit = $this->getSubmitValue();
         if (!empty($submit)) {
             return $submit;
-        ***REMOVED***
+        }
 
         return $this->inputValues;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -115,7 +115,7 @@ class MultiInput extends Input
             $valueItem = "";
             if (isset($values[$curInput])) {
                 $valueItem = $values[$curInput];
-            ***REMOVED***
+            }
 
             $inputDiv = $div->add('div')
                 ->attr('style', 'overflow: auto;');
@@ -129,8 +129,8 @@ class MultiInput extends Input
                 // Yeah yeah I know. Bad way to do this. Please fix it if you can.
                 if (!$updatedEmptyFields) {
                     $this->setEmptyFields(0);
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
 
             $inputDiv->add('input.form-control')
                 ->attr('type', $this->inputType)
@@ -147,13 +147,13 @@ class MultiInput extends Input
 
                 $removeButton->add('i')
                     ->attr('class', 'fa fa-times');
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         $addButton = $element->add('a')
             ->attr('type', 'button')
             ->attr('class', 'btn btn-'.$uniquename)
-            ->attr('onclick', $uniquename . '_add({***REMOVED***)')
+            ->attr('onclick', $uniquename . '_add({})')
             ->attr('style', 'margin-left: 15px; height: 34px;');
 
         $addButton->add('i')
@@ -181,11 +181,11 @@ class MultiInput extends Input
                 . $buttonStyle . '\" class=\"remove_field\" ><i class=\"fa fa-times\"</i></a>";
 
                         $(wrapper).append("<div style=\"overflow: auto;\">" + input + remove_field + "</div>");
-                    ***REMOVED***
+                    }
                     if (num_fields >= max_fields) {
                         $(".btn-'.$uniquename.'").hide();
-                    ***REMOVED***
-                ***REMOVED***
+                    }
+                }
                 $(wrapper).on("click", ".remove_field", function(e) {
                     e.preventDefault();
 
@@ -194,15 +194,15 @@ class MultiInput extends Input
                     num_fields--;
                     if (num_fields != max_fields) {
                         $(".btn-'.$uniquename.'").show();
-                    ***REMOVED***
-                ***REMOVED***)
+                    }
+                })
 
                 if (num_fields >= max_fields) {
                     $(".btn-'.$uniquename.'").hide();
-                ***REMOVED***
+                }
             '
             );
 
         return $element->render();
-    ***REMOVED***
-***REMOVED***
+    }
+}

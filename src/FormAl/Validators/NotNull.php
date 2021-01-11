@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Validators;
 
@@ -30,31 +30,31 @@ class NotNull extends ValidatorBase
         if (is_scalar($data)) {
             if (!empty($data)) {
                 return true;
-            ***REMOVED*** else {
+            } else {
                 $element->error($this->transEmpty, $this->transEmptyText);
-            ***REMOVED***
-        ***REMOVED*** elseif (is_array($data)) {
+            }
+        } elseif (is_array($data)) {
             if (count($data) > 0) {
                 return true;
-            ***REMOVED*** else {
+            } else {
                 $element->error($this->transEmpty, $this->transEmptyText);
-            ***REMOVED***
-        ***REMOVED*** elseif (is_null($data)) {
+            }
+        } elseif (is_null($data)) {
             $element->error($this->transEmpty, $this->transEmptyText);
             if ($element instanceof ImageUploadToServer || $element instanceof FileUpload) {
                 foreach($_FILES as $key => $files) {
                     if ($key == $element->getName() && $_FILES[$key]['size'] > 0) {
                         return true;
-                    ***REMOVED***
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED*** else {
+                    }
+                }
+            }
+        } else {
             $element->error(
                 "Onbekende inhoud",
                 "De inhoud van dit veld is niet correct. (is null)"
             );
-        ***REMOVED***
+        }
 
         return false;
-    ***REMOVED***
-***REMOVED***
+    }
+}

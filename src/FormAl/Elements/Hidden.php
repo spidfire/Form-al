@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -27,7 +27,7 @@ class Hidden extends Input
         $this->labelname = $text;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -35,7 +35,7 @@ class Hidden extends Input
     public function getLabel()
     {
         return $this->labelname;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -49,7 +49,7 @@ class Hidden extends Input
             ->attr('value', $this->getValue());
 
         return $element->render();
-    ***REMOVED***
+    }
 
     /**
      * @param int $length
@@ -61,5 +61,5 @@ class Hidden extends Input
         $this->addValidator(new MinLength($length));
 
         return $this;
-    ***REMOVED***
-***REMOVED***
+    }
+}

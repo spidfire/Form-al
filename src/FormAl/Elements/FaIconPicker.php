@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -28,7 +28,7 @@ class FaIconPicker extends ElementBase
         $this->labelname = $text;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -36,7 +36,7 @@ class FaIconPicker extends ElementBase
     public function getLabel()
     {
         return $this->labelname;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -53,12 +53,12 @@ class FaIconPicker extends ElementBase
         $oldIcon = '';
         if (!empty($this->getValue())) {
             $oldIcon = $this->getValue();
-        ***REMOVED***
+        }
         if (!empty($oldIcon) && stristr($this->getValue(), 'fa-')
             && stristr($this->getValue(), 'fa ') == false
         ) {
             $oldIcon = 'fa ' . $oldIcon;
-        ***REMOVED***
+        }
 
         $element->addHtml(
             '
@@ -76,21 +76,21 @@ class FaIconPicker extends ElementBase
                 footer: true,
                 header: true,
                 iconset: \'fontawesome\',
-                labelHeader: \'{0***REMOVED*** of {1***REMOVED*** pages\',
-                labelFooter: \'{0***REMOVED*** - {1***REMOVED*** of {2***REMOVED*** icons\',
+                labelHeader: \'{0} of {1} pages\',
+                labelFooter: \'{0} - {1} of {2} icons\',
                 placement: \'bottom\', // Only in button tag
                 rows: 4,
                 search: true,
                 searchText: \'Search\',
                 selectedClass: \'btn-success\',
                 unselectedClass: \'\'
-            ***REMOVED***);
+            });
             </script>
 '
         );
 
         return $element->render();
-    ***REMOVED***
+    }
 
     /**
      * @param int $length
@@ -102,5 +102,5 @@ class FaIconPicker extends ElementBase
         $this->addValidator(new MinLength($length));
 
         return $this;
-    ***REMOVED***
-***REMOVED***
+    }
+}

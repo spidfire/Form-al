@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 namespace FormAl\Utilities;
 
 /**
@@ -17,7 +17,7 @@ class MimeType
     {
         if (function_exists('mime_content_type')) {
             return mime_content_type($filename);
-        ***REMOVED***
+        }
         $mimeTypes = [
             'txt'  => 'text/plain',
             'htm'  => 'text/html',
@@ -70,14 +70,14 @@ class MimeType
         $ext = strtolower(array_pop(explode('.', $filename)));
         if (array_key_exists($ext, $mimeTypes)) {
             return $mimeTypes[$ext];
-        ***REMOVED*** elseif (function_exists('finfo_open')) {
+        } elseif (function_exists('finfo_open')) {
             $finfo = finfo_open(FILEINFO_MIME);
             $mimetype = finfo_file($finfo, $filename);
             finfo_close($finfo);
 
             return $mimetype;
-        ***REMOVED*** else {
+        } else {
             return 'application/octet-stream';
-        ***REMOVED***
-    ***REMOVED***
-***REMOVED***
+        }
+    }
+}

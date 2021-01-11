@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl;
 
@@ -45,7 +45,7 @@ abstract class ElementBase
         $name = $this->getFormAl()->getName() . $this->getUniqueName();
 
         return preg_replace("/[^a-zA-Z0-9-]+/", "_", $name);
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -53,7 +53,7 @@ abstract class ElementBase
     final public function getUniqueName()
     {
         return $this->uniquename;
-    ***REMOVED***
+    }
 
     /**
      * @return bool
@@ -61,7 +61,7 @@ abstract class ElementBase
     public function usesFullWidth()
     {
         return $this->fullWidth;
-    ***REMOVED***
+    }
 
     /**
      * @param string         $name
@@ -71,7 +71,7 @@ abstract class ElementBase
     {
         $this->uniquename = $name;
         $this->formal = $formal;
-    ***REMOVED***
+    }
 
     /**
      * @return FormAlAbstract
@@ -79,12 +79,12 @@ abstract class ElementBase
     public function getFormAl()
     {
         return $this->formal;
-    ***REMOVED***
+    }
 
     public function label($text)
     {
         return $text;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -92,7 +92,7 @@ abstract class ElementBase
     public function getLabel()
     {
         return ucfirst($this->getUniqueName());
-    ***REMOVED***
+    }
 
     /**
      * @param ValidatorBase $validator
@@ -104,7 +104,7 @@ abstract class ElementBase
         $this->validators[] = $validator;
 
         return $this;
-    ***REMOVED***    
+    }    
     
     /**
      * @return $this
@@ -113,7 +113,7 @@ abstract class ElementBase
         $this->validators = [];
 
         return $this;
-    ***REMOVED***    
+    }    
 
     abstract public function render();
 
@@ -127,7 +127,7 @@ abstract class ElementBase
         $this->value = $value;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param string $value
@@ -138,10 +138,10 @@ abstract class ElementBase
     {
         if (is_null($this->value)) {
             $this->value = $value;
-        ***REMOVED***
+        }
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return bool
@@ -149,7 +149,7 @@ abstract class ElementBase
     public function isEmpty()
     {
         return empty($this->getValue());
-    ***REMOVED***
+    }
 
     /**
      * @return string|null
@@ -159,10 +159,10 @@ abstract class ElementBase
         $submit = $this->getSubmitValue();
         if (!is_null($submit)) {
             return $submit;
-        ***REMOVED*** else {
+        } else {
             return $this->value;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     /**
      * @param string $tooltip
@@ -172,7 +172,7 @@ abstract class ElementBase
     public function tooltip($tooltip)
     {
         return $this->setTooltip($tooltip);
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -180,7 +180,7 @@ abstract class ElementBase
     public function getTooltip()
     {
         return $this->tooltip;
-    ***REMOVED***
+    }
 
     /**
      * @param string $tooltip
@@ -192,7 +192,7 @@ abstract class ElementBase
         $this->tooltip = $tooltip;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param string $markdown
@@ -202,7 +202,7 @@ abstract class ElementBase
     public function markdownInfoString($markdown)
     {
         return $this->setMarkdownInfoString($markdown);
-    ***REMOVED***
+    }
 
     /**
      * @param string $markdown
@@ -214,7 +214,7 @@ abstract class ElementBase
         $this->markdownInfo = $markdown;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param string $file
@@ -224,7 +224,7 @@ abstract class ElementBase
     public function markdownInfoFile($file)
     {
         return $this->setMarkdownInfoFile($file);
-    ***REMOVED***
+    }
 
     /**
      * @param string $file
@@ -236,12 +236,12 @@ abstract class ElementBase
         $path = Markdown::getMarkDownPath($file);
         if (!isset($path)) {
             return $this;
-        ***REMOVED***
+        }
 
         $this->markdownInfo = file_get_contents($path);
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return String
@@ -249,7 +249,7 @@ abstract class ElementBase
     public function getMarkdownInfo()
     {
         return $this->markdownInfo;
-    ***REMOVED***
+    }
 
     /**
      * @param bool $bool
@@ -257,7 +257,7 @@ abstract class ElementBase
     public function setFolded($bool)
     {
         $this->folded = $bool;
-    ***REMOVED***
+    }
 
     /**
      * @return bool
@@ -265,7 +265,7 @@ abstract class ElementBase
     public function isFolded()
     {
         return $this->folded;
-    ***REMOVED***
+    }
 
     /**
      * @return string|null
@@ -276,7 +276,7 @@ abstract class ElementBase
 
         return array_key_exists($this->getName(), $update)
             ? $update[$this->getName()] : null;
-    ***REMOVED***
+    }
 
     /**
      * @return bool
@@ -288,11 +288,11 @@ abstract class ElementBase
             $value = $this->getValue();
             if ($validator->validateInput($value, $this) == false) {
                 return false;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return true;
-    ***REMOVED***
+    }
 
     /**
      * @return $this
@@ -302,7 +302,7 @@ abstract class ElementBase
         $this->addValidator(new Validators\NotNull());
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param string $title
@@ -322,7 +322,7 @@ abstract class ElementBase
             "name"  => $fieldname,
             "msg"   => $msg
         ];
-    ***REMOVED***
+    }
 
     /**
      * @param string $title
@@ -331,7 +331,7 @@ abstract class ElementBase
     public function warning($title, $text)
     {
         $this->error($title, $text, 'warning');
-    ***REMOVED***
+    }
 
     /**
      * @return array
@@ -340,10 +340,10 @@ abstract class ElementBase
     {
         if (!empty($this->errors) || !$this->runValidators()) {
             return $this->errors;
-        ***REMOVED***
+        }
 
         return [];
-    ***REMOVED***
+    }
 
     /**
      * default implementation
@@ -355,7 +355,7 @@ abstract class ElementBase
     public function setOptions($options)
     {
         return false;
-    ***REMOVED***
+    }
 
     /**
      * default implementation
@@ -365,7 +365,7 @@ abstract class ElementBase
     public function getOptions()
     {
         return "";
-    ***REMOVED***
+    }
 
     /**
      * @return array
@@ -384,7 +384,7 @@ abstract class ElementBase
         );
 
         return $widget;
-    ***REMOVED***
+    }
 
     /**
      * @param array  $object
@@ -409,17 +409,17 @@ abstract class ElementBase
         $widget->label($object['Label']);
         if ($obj == 'autocomplete') {
             $widget->setOptions($autoCompleteOptions);
-        ***REMOVED*** else {
+        } else {
             $widget->setOptions(json_decode($object['Options'], true));
-        ***REMOVED***
+        }
 
         return $widget;
-    ***REMOVED***
+    }
 
     public function isValid()
     {
 
-    ***REMOVED***
+    }
 
     /**
      * Disable the browsers autofill
@@ -430,5 +430,5 @@ abstract class ElementBase
     {
         $this->hasAutoFill = false;
         return $this;
-    ***REMOVED***
-***REMOVED***
+    }
+}

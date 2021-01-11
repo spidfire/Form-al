@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Validators;
 
@@ -33,7 +33,7 @@ class MinMaxFieldsMultiInput extends ValidatorBase
 
         $this->minlength = $min;
         $this->maxlength = $max;
-    ***REMOVED***
+    }
 
     /**
      * @param string      $data
@@ -48,29 +48,29 @@ class MinMaxFieldsMultiInput extends ValidatorBase
             foreach ($data as $fields) {
                 if (!empty($fields)) {
                     $count++;
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
 
             if ($count < $this->minlength || $count > $this->maxlength) {
                 if ($count < $this->minlength) {
                     $element->error(
                         trans('Niet genoeg velden'), trans('Je moet minimaal %d velden invullen', $this->minlength)
                     );
-                ***REMOVED*** else {
+                } else {
                     $element->error(
                         trans('Teveel velden'), trans('Je mag maximaal %d velden invullen', $this->maxlength)
                     );
-                ***REMOVED***
+                }
                 return false;
-            ***REMOVED***
+            }
             return true;
-        ***REMOVED*** else {
+        } else {
             $element->error(
                 trans("Unknown data type"),
                 trans("The type of this value is not an Array")
             );
-        ***REMOVED***
+        }
 
         return false;
-    ***REMOVED***
-***REMOVED***
+    }
+}

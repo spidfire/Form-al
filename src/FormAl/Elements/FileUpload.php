@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -39,12 +39,12 @@ class FileUpload extends Input
             throw new \InvalidArgumentException(
                 "type of parameter isTemp is expected to be bool"
             );
-        ***REMOVED***
+        }
 
         $this->isTemp = $isTemp;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param string $value
@@ -56,7 +56,7 @@ class FileUpload extends Input
         $this->value = $value;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * Set to true to draw a button which on click creates more file upload form
@@ -71,7 +71,7 @@ class FileUpload extends Input
         $this->allowMultiple = $allowMultiple;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return null|string
@@ -90,10 +90,10 @@ class FileUpload extends Input
                 for ($i = 0; $i < count($jsonArr); $i++) {
                     if ($key == $jsonArr[$i]["name"]) {
                         $return[] = $jsonArr[$i];
-                    ***REMOVED***
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                    }
+                }
+            }
+        }
 
         if (!empty($_FILES)
             && array_key_exists($this->getName(), $_FILES)
@@ -108,7 +108,7 @@ class FileUpload extends Input
                         ),
                         "tmp_name" => $_FILES[$this->getName()]["tmp_name"][$i],
                     ];
-                ***REMOVED*** else {
+                } else {
                     $tmpFile = [];
                     $tmpFile["name"] = urlencode(
                         $_FILES[$this->getName()]["name"][$i]
@@ -124,16 +124,16 @@ class FileUpload extends Input
                         $arr = $this->storeFile($tmpFile);
                         if (!empty($arr)) {
                             $return[] = $arr;
-                        ***REMOVED***
-                    ***REMOVED***
-                ***REMOVED***
-            ***REMOVED***
+                        }
+                    }
+                }
+            }
 
             return json_encode($return);
-        ***REMOVED***
+        }
 
         return $this->value;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -159,7 +159,7 @@ class FileUpload extends Input
             $addButton = $element->add('button')
                 ->attr('type', 'button')
                 ->attr('class', 'btn btn-' . $this->getName())
-                ->attr('onclick', $this->getName() . '_add({***REMOVED***)')
+                ->attr('onclick', $this->getName() . '_add({})')
                 ->attr('style', 'margin-left: 15px;');
 
             $addButton->add('i')
@@ -178,16 +178,16 @@ class FileUpload extends Input
                             "<input class=\"form-control\" name=\"' . $this->getName() . '[]\" "
                             + "multiple=\"multiple\" accept=\"application/pdf\" style=\"' . $inputStyle . '\" type=\"file\">"
                         );
-                    ***REMOVED***
+                    }
                 ');
 
             $element->add('br');
-        ***REMOVED***
+        }
 
         $this->renderFiles($element);
 
         return $element->render();
-    ***REMOVED***
+    }
 
     /**
      * @param HtmlBuilder $element
@@ -199,7 +199,7 @@ class FileUpload extends Input
         $values = [];
         if (!empty($json)) {
             $values = json_decode($json);
-        ***REMOVED***
+        }
         if (is_array($values)) {
             foreach ($values as $value) {
                 $element->add('input')
@@ -214,9 +214,9 @@ class FileUpload extends Input
                 $label = $element->add('a')->attr('href', $value->link);
 
                 $label->addText($value->name);
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
+    }
 
     /**
      * @param string $file
@@ -231,10 +231,10 @@ class FileUpload extends Input
         if (!empty($var) && !array_key_exists("succes", $var)) {
             $arr["name"] = $var["file"]["name"];
             $arr["link"] = $var["file"]["location"];
-        ***REMOVED***
+        }
 
         return $arr;
-    ***REMOVED***
+    }
 
     /**
      * @param string $filetype
@@ -246,5 +246,5 @@ class FileUpload extends Input
         $this->accept = $filetype;
 
         return $this;
-    ***REMOVED***
-***REMOVED***
+    }
+}

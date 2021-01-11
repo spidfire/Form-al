@@ -1,19 +1,19 @@
-***REMOVED***
+<?php
     
     use spidfire\Utilities\HtmlBuilder;
-***REMOVED***
+    include("../vendor/autoload.php");
 
-***REMOVED***
+    $f = new spidfire\FormAl("UserEdit");
 
     $f->input('firstname') // useable name (like db name)
-***REMOVED***
+      ->addValidator(new spidfire\Validators\MinLength(3))
       ->label("Firstname"); // label of this field
 
     $f->input('lastname')
       ->min(3)
       ->label("LastName");
 
-***REMOVED***
+    $s = $f->submit('Verzend met deze knop');
 
 
 
@@ -27,9 +27,9 @@
         echo "gegevens ontvangen!<br/><pre>";
         var_dump($f->export());
         echo "</pre>";
-    ***REMOVED***
+    }
 
 
-***REMOVED***
+    echo $f->render();
 
     

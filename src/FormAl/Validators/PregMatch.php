@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Validators;
 
@@ -25,7 +25,7 @@ class PregMatch extends ValidatorBase
     public function __construct($regex)
     {
         $this->regex = $regex;
-    ***REMOVED***
+    }
 
     /**
      * @return array
@@ -33,7 +33,7 @@ class PregMatch extends ValidatorBase
     public function getResults()
     {
         return $this->results;
-    ***REMOVED***
+    }
 
     /**
      * @param string $title
@@ -47,7 +47,7 @@ class PregMatch extends ValidatorBase
         $this->errorText = $error;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param string      $data
@@ -61,16 +61,16 @@ class PregMatch extends ValidatorBase
         if (is_string($data)) {
             if (preg_match($this->regex, $data, $this->results)) {
                 return true;
-            ***REMOVED*** else {
+            } else {
                 $element->error($this->errorTitle, $this->errorText);
-            ***REMOVED***
-        ***REMOVED*** else {
+            }
+        } else {
             $element->error(
                 "Unkown data type",
                 "The type of this value is not a String"
             );
-        ***REMOVED***
+        }
 
         return false;
-    ***REMOVED***
-***REMOVED***
+    }
+}

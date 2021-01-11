@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -20,7 +20,7 @@ class PositiveInteger extends Integer
     {
         parent::__construct($name, $formal);
         $this->min('1');
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -35,5 +35,5 @@ class PositiveInteger extends Integer
             ->attr('value', $this->getValue());
 
         return $element->render();
-    ***REMOVED***
-***REMOVED***
+    }
+}

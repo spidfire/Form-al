@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Validators;
 
@@ -25,7 +25,7 @@ class MinMaxWords extends ValidatorBase
     {
         $this->min = $min;
         $this->max = $max;
-    ***REMOVED***
+    }
 
     /**
      * @param string      $data
@@ -39,17 +39,17 @@ class MinMaxWords extends ValidatorBase
             $words = preg_split("/\\s+/", $data);
             if (count($words) >= $this->min && count($words) <= $this->max) {
                 return true;
-            ***REMOVED*** else {
+            } else {
                 $element->error(
                     "Verkeerde hoeveelheid woorden",
-                    "De invoer moet tussen de {$this->min***REMOVED*** en {$this->max***REMOVED*** aantal woorden, het zijn er momenteel: "
+                    "De invoer moet tussen de {$this->min} en {$this->max} aantal woorden, het zijn er momenteel: "
                     . count($words)
                 );
-            ***REMOVED***
-        ***REMOVED*** else {
+            }
+        } else {
             $element->error("Onbekende inhoud", "De inhoud is niet correct");
-        ***REMOVED***
+        }
 
         return false;
-    ***REMOVED***
-***REMOVED***
+    }
+}

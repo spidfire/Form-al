@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 namespace FormAl\Elements;
 
 use FormAl\ElementBase;
@@ -28,7 +28,7 @@ class Button extends ElementBase
         $this->labelname = $text;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -36,7 +36,7 @@ class Button extends ElementBase
     public function getLabel()
     {
         return $this->labelname;
-    ***REMOVED***
+    }
 
     /**
      * @param string $location
@@ -48,7 +48,7 @@ class Button extends ElementBase
         $this->location = $location;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param string $text
@@ -56,7 +56,7 @@ class Button extends ElementBase
     public function setText($text)
     {
         $this->text = $text;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -71,5 +71,5 @@ class Button extends ElementBase
             ->addText($this->text);
 
         return $element->render();
-    ***REMOVED***
-***REMOVED***
+    }
+}

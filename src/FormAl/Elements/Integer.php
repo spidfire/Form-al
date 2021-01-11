@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -30,7 +30,7 @@ class Integer extends ElementBase
         $this->labelname = $text;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -39,10 +39,10 @@ class Integer extends ElementBase
     {
         if ($this->isRequired()) {
             return $this->labelname . '*';
-        ***REMOVED*** else {
+        } else {
             return $this->labelname;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     /**
      * @return bool
@@ -50,7 +50,7 @@ class Integer extends ElementBase
     public function isRequired()
     {
         return $this->isRequired;
-    ***REMOVED***
+    }
 
     /**
      * @param bool $isRequired
@@ -58,14 +58,14 @@ class Integer extends ElementBase
     public function setIsRequired($isRequired = true)
     {
         $this->isRequired = $isRequired;
-    ***REMOVED***
+    }
 
     public function notNull()
     {
         $this->setIsRequired();
 
         return parent::notNull();
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -79,7 +79,7 @@ class Integer extends ElementBase
             ->attr('value', $this->getValue());
 
         return $element->render();
-    ***REMOVED***
+    }
 
     /**
      * @param int $length
@@ -91,7 +91,7 @@ class Integer extends ElementBase
         $this->addValidator(new MinIntValue($length));
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return bool
@@ -99,5 +99,5 @@ class Integer extends ElementBase
     public function isEmpty()
     {
         return $this->getValue() === null;
-    ***REMOVED***
-***REMOVED***
+    }
+}

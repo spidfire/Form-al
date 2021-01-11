@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Validators;
 
@@ -25,7 +25,7 @@ class MinIntValue extends ValidatorBase
     public function __construct($length)
     {
         $this->minvalue = $length;
-    ***REMOVED***
+    }
 
     /**
      * @param int         $data
@@ -39,19 +39,19 @@ class MinIntValue extends ValidatorBase
             $data = (int)$data;
             if ($data >= $this->minvalue) {
                 return true;
-            ***REMOVED*** else {
+            } else {
                 $element->error(
                     $this->errorLowTitle,
                     sprintf($this->errorLowText, $this->minvalue)
                 );
-            ***REMOVED***
-        ***REMOVED*** else {
+            }
+        } else {
             $element->error(
                 "Onbekende inhoud",
                 "De inhoud van dit veld is niet correct. (min lengte check)"
             );
-        ***REMOVED***
+        }
 
         return false;
-    ***REMOVED***
-***REMOVED***
+    }
+}

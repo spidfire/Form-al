@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -31,7 +31,7 @@ class ImageUploadToServer extends Input
         parent::__construct($name, $formal);
 
         $this->addValidator(new ValidImage());
-    ***REMOVED***
+    }
 
     /**
      * Add validator after deserialize.
@@ -39,7 +39,7 @@ class ImageUploadToServer extends Input
     public function __wakeup()
     {
         $this->addValidator(new ValidImage());
-    ***REMOVED***
+    }
 
     /**
      * @param string $value
@@ -50,20 +50,20 @@ class ImageUploadToServer extends Input
     {
         if (!empty($_POST['delete' . $this->getName()])) {
             return '';
-        ***REMOVED*** elseif (isset($_FILES[$this->getName()])) {
+        } elseif (isset($_FILES[$this->getName()])) {
             if ($_FILES[$this->getName()]['size'] > 0) {
                 $this->value = StorageServer::storePicture(
                     $_FILES[$this->getName()]
                 );
-            ***REMOVED*** else {
+            } else {
                 $this->value = $value;
-            ***REMOVED***
-        ***REMOVED*** else {
+            }
+        } else {
             $this->value = $value;
-        ***REMOVED***
+        }
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return array|bool|null|string
@@ -72,12 +72,12 @@ class ImageUploadToServer extends Input
     {
         if (empty($this->value)) {
             $this->setValue(null);
-        ***REMOVED*** elseif (is_array($this->value)) {
+        } elseif (is_array($this->value)) {
             return null;
-        ***REMOVED***
+        }
 
         return $this->value;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -113,15 +113,15 @@ class ImageUploadToServer extends Input
                 ->attr('name', 'delete' . $this->getName())
                 ->attr('label', 'Delete image');
             $element->addText(trans("Delete this picture"));
-        ***REMOVED*** else {
+        } else {
             $element->add('input.form-control')
                 ->attr('type', 'file')
                 ->attr('name', $this->getName())
                 ->attr('accept', "image/*");
-        ***REMOVED***
+        }
 
         return $element->render();
-    ***REMOVED***
+    }
 
     /**
      * @return bool
@@ -131,5 +131,5 @@ class ImageUploadToServer extends Input
         $this->value = null;
 
         return true;
-    ***REMOVED***
-***REMOVED***
+    }
+}

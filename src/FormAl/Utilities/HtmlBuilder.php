@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Utilities;
 
@@ -24,7 +24,7 @@ class HtmlBuilder
     public static function create($name)
     {
         return new self($name);
-    ***REMOVED***
+    }
 
     /**
      * @param string $name
@@ -36,10 +36,10 @@ class HtmlBuilder
             list($name, $classes) = explode(".", $name, 2);
             if (!empty($classes)) {
                 $this->attr("class", str_replace('.', ' ', $classes));
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
         $this->name = htmlspecialchars($name);
-    ***REMOVED***
+    }
 
     /**
      * @param string $name
@@ -51,10 +51,10 @@ class HtmlBuilder
     {
         if ($value !== null) {
             $this->attr[$name] = $value;
-        ***REMOVED***
+        }
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param string $value
@@ -66,12 +66,12 @@ class HtmlBuilder
         if (isset($this->attr['class'])) {
             $this->attr['class'] = $this->attr['class'] . " " . $value;
 
-        ***REMOVED*** else {
+        } else {
             $this->attr['class'] = $value;
-        ***REMOVED***
+        }
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param array|string $style
@@ -85,19 +85,19 @@ class HtmlBuilder
             $concattedstyle = "";
             foreach ($style as $key => $value) {
                 $concattedstyle[] = $key . ":" . $value;
-            ***REMOVED***
+            }
             $concattedstyle = implode(";", $concattedstyle);
             $this->attr('style', $concattedstyle);
-        ***REMOVED*** elseif (is_string($style)) {
+        } elseif (is_string($style)) {
             $this->attr('style', $style);
-        ***REMOVED*** else {
+        } else {
             throw new \Exception("Unkown type for style in HtmlBuilder", 1);
 
-        ***REMOVED***
+        }
 
         return $this;
 
-    ***REMOVED***
+    }
 
     /**
      * @return $this
@@ -107,7 +107,7 @@ class HtmlBuilder
         $this->addHtml("<br/>\n");
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param string $name
@@ -121,7 +121,7 @@ class HtmlBuilder
         $this->add[] = ['type' => 'htmlbuilder', 'data' => $element];
 
         return $element;
-    ***REMOVED***
+    }
 
     /**
      * @param string $text
@@ -133,7 +133,7 @@ class HtmlBuilder
         $this->add[] = ['type' => 'text', 'data' => $text];
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param string $text
@@ -145,7 +145,7 @@ class HtmlBuilder
         $this->add[] = ['type' => 'html', 'data' => $text];
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param array $variables
@@ -157,11 +157,11 @@ class HtmlBuilder
     {
         $html = $this->render();
         foreach ($variables as $key => $value) {
-            $html = preg_replace("/{{\s*" . $key . "\s****REMOVED******REMOVED***/is", $value, $html);
-        ***REMOVED***
+            $html = preg_replace("/{{\s*" . $key . "\s*}}/is", $value, $html);
+        }
 
         return $html;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -185,12 +185,12 @@ class HtmlBuilder
                         $html .= ".append($(" . json_encode($el['data'])
                             . ").text())\n";
                         break;
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
 
         return $html;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -206,10 +206,10 @@ class HtmlBuilder
                     "The value of the attribute '$key' is an array!",
                     1
                 );
-            ***REMOVED*** elseif (!is_null($value)) {
+            } elseif (!is_null($value)) {
                 $html .= " " . $key . "=\"" . htmlentities($value) . "\"";
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         if (count($this->add) > 0) {
             $html .= ">";
@@ -226,21 +226,21 @@ class HtmlBuilder
                     case 'text':
                         $html .= htmlspecialchars($el['data']);
                         break;
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
 
             $html .= "</" . $this->name . ">";
-        ***REMOVED*** else {
+        } else {
             $singletags = ['input'];
             if (in_array($this->name, $singletags)) {
                 $html .= "/>";
-            ***REMOVED*** else {
+            } else {
                 $html .= "></" . $this->name . ">";
-            ***REMOVED***
+            }
 
 
-        ***REMOVED***
+        }
 
         return $html;
-    ***REMOVED***
-***REMOVED***
+    }
+}

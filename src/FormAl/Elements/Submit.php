@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -26,7 +26,7 @@ class Submit extends ElementBase
         $name = md5($this->getName());
 
         return isset($updateArray[$name]);
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -36,11 +36,11 @@ class Submit extends ElementBase
     {
         $element = new HtmlBuilder('input.form-control.btn.btn-primary.formal-element');
         $element->attr('style', 'width:250px');
-        $element->attr('onclick', "if(this.getAttribute('rel')=='submitted'){return false;***REMOVED***;this.setAttribute('rel','submitted');setTimeout(function(){this.removeAttribute('rel')***REMOVED***, 3000);");
+        $element->attr('onclick', "if(this.getAttribute('rel')=='submitted'){return false;};this.setAttribute('rel','submitted');setTimeout(function(){this.removeAttribute('rel')}, 3000);");
         $element->attr('type', 'submit')
             ->attr('name', md5($this->getName()))
             ->attr('value', $this->getLabel());
 
         return $element->render();
-    ***REMOVED***
-***REMOVED***
+    }
+}

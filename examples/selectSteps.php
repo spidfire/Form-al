@@ -1,8 +1,8 @@
-***REMOVED***
+<?php
      echo "<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>";
-***REMOVED***
+    include("../vendor/autoload.php");
 
-***REMOVED***
+    $f = new spidfire\FormAl("UserEdit");
     
     $options = array(
         "bier" => array(
@@ -40,11 +40,11 @@
         ->setValue("")
         ->options($options);
 
-***REMOVED***
+    $s = $f->submit('Verzend met deze knop');
 
     if($s->isClicked()){
         echo "gegevens ontvangen!<br/>";
         var_dump($f->export());
-    ***REMOVED***
+    }
 
-***REMOVED***
+    echo $f->render();

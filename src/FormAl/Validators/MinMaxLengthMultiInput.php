@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Validators;
 
@@ -37,7 +37,7 @@ class MinMaxLengthMultiInput extends ValidatorBase
         $this->maxlength = $max;
 
         $this->ignoreEmpty = $ignoreEmpty;
-    ***REMOVED***
+    }
 
     /**
      * @param string      $data
@@ -51,7 +51,7 @@ class MinMaxLengthMultiInput extends ValidatorBase
             foreach($data as $elementData) {
                 if ($this->ignoreEmpty && empty($elementData)) {
                     continue;
-                ***REMOVED***
+                }
 
                 $len = strlen($elementData);
 
@@ -62,24 +62,24 @@ class MinMaxLengthMultiInput extends ValidatorBase
                                 'Invoer moet minimaal %d karakters bevatten', $this->minlength
                             )
                         );
-                    ***REMOVED*** else {
+                    } else {
                         $element->error(
                             trans('Invoer te kort'), trans(
                                 'Invoer mag maximaal %d karakters bevatten', $this->maxlength
                             )
                         );
-                    ***REMOVED***
+                    }
                     return false;
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
             return true;
-        ***REMOVED*** else {
+        } else {
             $element->error(
                 trans("Unknown data type"),
                 trans("The type of this value is not an Array")
             );
-        ***REMOVED***
+        }
 
         return false;
-    ***REMOVED***
-***REMOVED***
+    }
+}

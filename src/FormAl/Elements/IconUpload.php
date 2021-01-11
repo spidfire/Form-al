@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -28,13 +28,13 @@ class IconUpload extends Input
         if (preg_match("/md-.*/", $value)) {
             $this->value = "materialdesign";
             $this->extendFields['materialdesign']->setValue($value);
-        ***REMOVED*** else {
+        } else {
             $this->value = "typeimage";
             $this->extendFields['imageupload']->setValue($value);
-        ***REMOVED***
+        }
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param string         $name
@@ -51,7 +51,7 @@ class IconUpload extends Input
             $formal
         );
         parent::__construct($name, $formal);
-    ***REMOVED***
+    }
 
     /**
      * @return mixed
@@ -61,14 +61,14 @@ class IconUpload extends Input
         $icondetails = $this->getValueIntern();
         if ($icondetails['selected'] == "typeimage") {
             return $icondetails['imageupload'];
-        ***REMOVED*** else {
+        } else {
             if ($icondetails['selected'] == "materialdesign") {
                 return $icondetails['materialdesign'];
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return null;
-    ***REMOVED***
+    }
 
     /**
      * @return array
@@ -78,12 +78,12 @@ class IconUpload extends Input
         $out = [];
         foreach ($this->extendFields as $key => $value) {
             $out[$key] = $value->getValue();
-        ***REMOVED***
+        }
         $out['selected'] = (isset($_POST[$this->getName()]))
             ? $_POST[$this->getName()] : $this->value;
 
         return $out;
-    ***REMOVED***
+    }
 
     /**
      * @return mixed
@@ -112,7 +112,7 @@ class IconUpload extends Input
                 )
                 ->addText($value);
 
-        ***REMOVED***
+        }
 
         $element->addHtml('<br>');
 
@@ -122,36 +122,36 @@ class IconUpload extends Input
                 $(document).ready(function() {
                 $(".materialdesigndiv").show();
                     $(".imagediv").hide();
-                ***REMOVED***);
+                });
 
                 function changeImageSelect(select) {
                     var value = select.value;
                 if (value == "typeimage") {
                         $(".imagediv").show();
                         $(".materialdesigndiv").hide();
-                    ***REMOVED*** else {
+                    } else {
                         $(".imagediv").hide();
                         $(".materialdesigndiv").show();
-                    ***REMOVED***
-                ***REMOVED***
+                    }
+                }
 
                 function changeBorderColor(input) {
                     input.style.borderColor = input.value;
-                ***REMOVED***
+                }
                 $(function(){
                     var value = "' . $values['selected'] . '";
                 if (value == "typeimage") {
                         $(".imagediv").show();
                         $(".materialdesigndiv").hide();
-                    ***REMOVED*** else if (value == "materialdesign"){
+                    } else if (value == "materialdesign"){
                         $(".imagediv").hide();
                         $(".materialdesigndiv").show();
-                    ***REMOVED*** else {
+                    } else {
                   $(".imagediv").hide();
                   $(".materialdesigndiv").show();
-                ***REMOVED***
+                }
 
-                ***REMOVED***)
+                })
 
             </script>
             <div class="imagediv">
@@ -164,7 +164,7 @@ class IconUpload extends Input
         );
 
         return $element->render();
-    ***REMOVED***
+    }
 
     /**
      * @param $file
@@ -176,5 +176,5 @@ class IconUpload extends Input
         $var = StorageServer::storePicture($file);
 
         return $var;
-    ***REMOVED***
-***REMOVED***
+    }
+}

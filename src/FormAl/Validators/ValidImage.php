@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Validators;
 
@@ -23,7 +23,7 @@ class ValidImage extends ValidatorBase
     {
         if (!is_array($data)) {
             return true;
-        ***REMOVED*** else {
+        } else {
             /** @var ImageUploadToServer $element */
             $element->resetUploaded();
 
@@ -31,9 +31,9 @@ class ValidImage extends ValidatorBase
                 //Split in title and message
                 list($title, $message) = explode('.', $error, 2);
                 $element->error($title, $message);
-            ***REMOVED***
+            }
 
             return false;
-        ***REMOVED***
-    ***REMOVED***
-***REMOVED***
+        }
+    }
+}

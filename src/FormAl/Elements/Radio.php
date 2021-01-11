@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -20,7 +20,7 @@ class Radio extends Input
     public function options($options)
     {
         $this->options = $options;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -34,7 +34,7 @@ class Radio extends Input
         $this->optGroups($sel, $this->options);
 
         return $element->render();
-    ***REMOVED***
+    }
 
     /**
      * @param HtmlBuilder $builder
@@ -48,7 +48,7 @@ class Radio extends Input
                 $list->addText($key);
                 $sub = $list->add('ul');
                 $this->optGroups($sub, $value);
-            ***REMOVED*** else {
+            } else {
                 $builder->add('li')
                     ->add('label')
                     ->add('input')
@@ -61,7 +61,7 @@ class Radio extends Input
                     ->attr('value', $key)
                     ->addText($value);
 
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
-***REMOVED***
+            }
+        }
+    }
+}

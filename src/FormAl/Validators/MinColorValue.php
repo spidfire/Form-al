@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Validators;
 
@@ -22,9 +22,9 @@ class MinColorValue extends ValidatorBase
     {
         if ($luma < 0 || $luma > 255) {
             throw new Exception("The luma value should be between 0 and 255");
-        ***REMOVED***
+        }
         $this->minColor = $luma;
-    ***REMOVED***
+    }
 
     /**
      * @param string      $data
@@ -46,20 +46,20 @@ class MinColorValue extends ValidatorBase
 
             if ($luma < $this->minColor) {
                 return true;
-            ***REMOVED*** else {
+            } else {
                 $element->error(
                     trans("Error"),
                     trans("This color is too bright. Pick a different color.")
                 );
-            ***REMOVED***
-        ***REMOVED*** else {
+            }
+        } else {
             $element->error(
                 trans("Unknown content"),
                 trans("The content of this field is not in the right format. Change it to a hexidecimal color value.")
             );
-        ***REMOVED***
+        }
 
         return false;
-    ***REMOVED***
+    }
 
-***REMOVED***
+}

@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -28,7 +28,7 @@ class MultiSelect extends Input
         $this->options = $options;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return array
@@ -38,15 +38,15 @@ class MultiSelect extends Input
         $submit = $this->getSubmitValue();
         if (count($submit) > 0) {
             return array_keys($submit);
-        ***REMOVED***
+        }
         if (array_key_exists($this->getName() . "_submitted", $_POST)) {
             return [];
-        ***REMOVED***
+        }
         if (is_array($this->value)) {
             return array_values($this->value);
-        ***REMOVED***
+        }
         return [];
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -65,7 +65,7 @@ class MultiSelect extends Input
             ->attr('value', 'yes');
 
         return $element->render() . $hidden->render();
-    ***REMOVED***
+    }
 
     /**
      * @param HtmlBuilder $builder
@@ -84,6 +84,6 @@ class MultiSelect extends Input
                 ->attr('name', $this->getName() . "[" . $key . "]");
 
             $label->addText($value);
-        ***REMOVED***
-    ***REMOVED***
-***REMOVED***
+        }
+    }
+}

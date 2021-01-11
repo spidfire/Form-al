@@ -1,11 +1,11 @@
-***REMOVED***
+<?php
     use spidfire\Utilities\HtmlBuilder;
-***REMOVED***
+    include("../vendor/autoload.php");
 
-***REMOVED***
+    $f = new spidfire\FormAl("UserEdit");
 
     $f->input('firstname') // useable name (like db name)
-***REMOVED***
+      ->addValidator(new spidfire\Validators\MinLength(3))
       ->label("Firstname"); // label of this field
 
     $options = array(
@@ -19,11 +19,11 @@
             );
     $f->select('lastname')
       ->label("LastName")
-***REMOVED***
+      ->addValidator(new spidfire\Validators\MinLength(3))
       ->addValidator(new spidfire\Validators\PregMatch('/^.*e[nr]$/')) // will match Targaryen and Lanister
       ->options($options);
 
-***REMOVED***
+    $s = $f->submit('Verzend met deze knop');
     $reset = $f->submit('Reset Data');
 
 
@@ -32,10 +32,10 @@
     if($s->isClicked()){
         echo "gegevens ontvangen!<br/>";
         var_dump($f->export());
-    ***REMOVED***
+    }
 
     if($reset->isClicked()){
         $f->import(array());
         $_GET = array();
-    ***REMOVED***
-***REMOVED***
+    }
+    echo $f->render();

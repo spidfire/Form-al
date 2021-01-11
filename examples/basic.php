@@ -1,8 +1,8 @@
-***REMOVED***
+<?php
     
-***REMOVED***
+    include("../vendor/autoload.php");
 
-***REMOVED***
+    $f = new spidfire\FormAl("UserEdit");
 
     $f->input('firstname') // useable name (like db name)
       ->label("Firstname"); // label of this field
@@ -10,11 +10,11 @@
     $f->input('lastname')
       ->label("LastName");
 
-***REMOVED***
+    $s = $f->submit('Verzend met deze knop');
 
     if($s->isClicked()){
         echo "gegevens ontvangen!<br/>";
         var_dump($f->export());
-    ***REMOVED***
+    }
 
-***REMOVED***
+    echo $f->render();

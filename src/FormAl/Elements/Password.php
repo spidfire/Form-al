@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -28,7 +28,7 @@ class Password extends Input
         $this->value = $value;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return null|string
@@ -39,10 +39,10 @@ class Password extends Input
         $submit = $this->getSubmitValue();
         if ($submit !== null) {
             return $this->encode($submit);
-        ***REMOVED*** else {
+        } else {
             return $this->value;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     /**
      * @param $data
@@ -66,10 +66,10 @@ class Password extends Input
             case 'plain':
                 return $data;
                 break;
-        ***REMOVED***
+        }
         throw new \Exception("No valid encryption method has been chosen", 1);
 
-    ***REMOVED***
+    }
 
     /**
      * @param string $method
@@ -84,5 +84,5 @@ class Password extends Input
         $this->encodeType = $method;
         $this->encodePreSalt = $preSalt;
         $this->encodePostSalt = $postSalt;
-    ***REMOVED***
-***REMOVED***
+    }
+}

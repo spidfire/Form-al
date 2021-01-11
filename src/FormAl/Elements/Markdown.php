@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -29,7 +29,7 @@ class Markdown extends ElementBase
         $name = md5($this->getName());
 
         return isset($updateArray[$name]);
-    ***REMOVED***
+    }
 
     /**
      * @param string $md
@@ -42,7 +42,7 @@ class Markdown extends ElementBase
         $md = addslashes($md);
         $this->text = $parse->text($md);
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param bool $bool
@@ -50,7 +50,7 @@ class Markdown extends ElementBase
     public function setFullWidth($bool)
     {
         $this->fullWidth = $bool;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -58,5 +58,5 @@ class Markdown extends ElementBase
     public function render()
     {
         return $this->text;
-    ***REMOVED***
-***REMOVED***
+    }
+}

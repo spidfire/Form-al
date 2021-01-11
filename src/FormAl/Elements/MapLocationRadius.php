@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -32,10 +32,10 @@ class MapLocationRadius extends ElementBase
         $this->locationLng = \Config::$MUNICIPALITY_DEFAULT_LNG;
         if ($radius) {
             $this->radius = \Config::$MUNICIPALITY_DEFAULT_RADIUS;
-        ***REMOVED***
+        }
 
         parent::__construct($name, $formal);
-    ***REMOVED***
+    }
 
     /**
      * @param string $text
@@ -47,7 +47,7 @@ class MapLocationRadius extends ElementBase
         $this->labelname = $text;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -55,7 +55,7 @@ class MapLocationRadius extends ElementBase
     public function getLabel()
     {
         return $this->labelname;
-    ***REMOVED***
+    }
 
     /**
      * @param float $locationLat
@@ -67,20 +67,20 @@ class MapLocationRadius extends ElementBase
         $this->locationLat = $locationLat;
         $this->locationLng = $locationLng;
         $this->radius = $radius;
-    ***REMOVED***
+    }
 
     public function setValuesFromPost()
     {
         if (isset($_POST['location_lat'])) {
             $this->locationLat = $_POST['location_lat'];
-        ***REMOVED***
+        }
         if (isset($_POST['location_lng'])) {
             $this->locationLng = $_POST['location_lng'];
-        ***REMOVED***
+        }
         if (isset($_POST['radius'])) {
             $this->radius = $_POST['radius'];
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     /**
      * @return string
@@ -152,8 +152,8 @@ class MapLocationRadius extends ElementBase
                 ->attr('onkeyup', 'this.onchange()')
                 ->attr('value', $this->radius);
             $html .= $element->render();
-        ***REMOVED***
+        }
 
         return $html;
-    ***REMOVED***
-***REMOVED***
+    }
+}

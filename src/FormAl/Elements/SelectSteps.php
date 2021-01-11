@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -26,10 +26,10 @@ class SelectSteps extends Input
         $this->options = $options;
         if ($this->nullable) {
             $this->options = array_merge($this->options, ["" => trans("None")]);
-        ***REMOVED***
+        }
         
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -47,7 +47,7 @@ class SelectSteps extends Input
                     $(".selectdepth-0").show();
                     $("#' . $this->getName() . '").val(value);
                     return;
-                ***REMOVED***
+                }
                 var select = $(".selectedstep-" + selected);
                 if(select.length == 0){
                     $("#' . $this->getName() . '").val(value);
@@ -58,11 +58,11 @@ class SelectSteps extends Input
                     for(var i = selectdepth; i < 10; i++){
                         
                         $(".selectdepth-" + i).hide();
-                    ***REMOVED***
-                ***REMOVED*** else {
+                    }
+                } else {
                     $("#' . $this->getName() . '").val();
                     $("#' . $this->getName() . '-text").hide();
-                ***REMOVED***
+                }
                 select.each(function(){
                     var classes = $(this).attr("class");
                     var depth = classes.substr(classes.indexOf("selectdepth-") + 12, 1);
@@ -70,7 +70,7 @@ class SelectSteps extends Input
                     for(var i = depth; i < 10; i++){
                         
                         $(".selectdepth-" + i).hide();
-                    ***REMOVED***
+                    }
 
                     $(this).show();
 
@@ -80,8 +80,8 @@ class SelectSteps extends Input
                     var choice = $(this).find(":selected").html();
                     var row = classes.substr(count);
                     addStep(row, sendvalue, choice);
-                ***REMOVED***)
-            ***REMOVED***
+                })
+            }
             $(".select-row").on("change mouseup", ".selectstep", function(){
              
                 var classes = $(this).find(":selected").attr("class");
@@ -90,7 +90,7 @@ class SelectSteps extends Input
                 var choice = $(this).find(":selected").html();
                 var row = classes.substr(count);
                 addStep(row, sendvalue, choice);
-            ***REMOVED***)
+            })
         </script>'
         );
         //$e->attr('name', $this->getName());
@@ -104,7 +104,7 @@ class SelectSteps extends Input
         );
 
         return $element->render();
-    ***REMOVED***
+    }
 
     /**
      * @param HtmlBuilder $builder
@@ -128,7 +128,7 @@ class SelectSteps extends Input
             $this->error("Data problem", "There is a infinite amount of data");
 
             return null;
-        ***REMOVED***
+        }
         $selected = false;
 
         $select = $builder->add(
@@ -144,16 +144,16 @@ class SelectSteps extends Input
 
             if (is_array($value)) {
                 $option->addText($key);
-            ***REMOVED*** else {
+            } else {
                 if ($key == $default) {
                     $option->attr('selected', true);
                     $hidden = false;
                     $selected = true;
-                ***REMOVED***
+                }
                 $option->addText($value);
-            ***REMOVED***
+            }
             $options[$key] = $option;
-        ***REMOVED***
+        }
 
         $tempdepth = $depth + 1;
         foreach ($data as $key => $value) {
@@ -172,18 +172,18 @@ class SelectSteps extends Input
                     $option = $options[$key];
                     $option->attr('selected', true);
                     $hidden = false;
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
+                }
+            }
+        }
         if ($hidden) {
             $hidden = "none";
-        ***REMOVED*** else {
+        } else {
             $hidden = "block";
-        ***REMOVED***
+        }
         $select->attr("style", "margin-bottom: 5px;display:" . $hidden);
 
         return $selected;
-    ***REMOVED***
+    }
 
     /**
      * @param string $string
@@ -202,7 +202,7 @@ class SelectSteps extends Input
             '',
             $string
         ); // Removes special chars.
-    ***REMOVED***
+    }
 
     /**
      * @return $this
@@ -212,5 +212,5 @@ class SelectSteps extends Input
         $this->nullable = false;
 
         return parent::notNull();
-    ***REMOVED***
-***REMOVED***
+    }
+}

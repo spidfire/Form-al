@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl;
 
@@ -163,18 +163,18 @@ class FormAl extends FormAlAbstract
                 'return window.confirm(' . json_encode($this->confirmtext)
                 . ');'
             );
-        ***REMOVED***
+        }
 
         foreach ($this->getElements() as $el) {
             $this->renderElement($form, $el, $showErrors);
-        ***REMOVED***
+        }
 
         if ($this->tabCount > 0) {
             $form->addHtml("</section>");
             $form->addHtml("<script>");
             $form->addHtml("$('#" . $this->getName() . "').easyWizard();");
             $form->addHtml("</script>");
-        ***REMOVED***
+        }
 
         //remove border on small devices
         $form->addHtml(
@@ -183,19 +183,19 @@ class FormAl extends FormAlAbstract
             bordered();
             $(window).resize(function() {
                 bordered();
-            ***REMOVED***);
+            });
             function bordered() {
                 if ($(window).width() < 768 && small == false) {
                     $('form').removeClass('form-bordered');
                     small = true;
-                ***REMOVED*** else if($(window).width() > 768 && small == true) {
+                } else if($(window).width() > 768 && small == true) {
                     $('form').addClass('form-bordered');
                     small = false;
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
             </script>");
         return $form->render();
-    ***REMOVED***
+    }
 
     /**
      * @param HtmlBuilder $parent
@@ -209,7 +209,7 @@ class FormAl extends FormAlAbstract
             /** @var Elements\Title $element */
             if ($this->tabCount > 0) {
                 $parent->addHtml("</section>");
-            ***REMOVED***
+            }
 
             $parent->addHtml(
                 "<section class='step' data-step-title=\"" . htmlentities(
@@ -217,40 +217,40 @@ class FormAl extends FormAlAbstract
                 ) . "\">"
             );
             $this->tabCount++;
-        ***REMOVED*** elseif ($element instanceof Elements\FoldGroup) {
+        } elseif ($element instanceof Elements\FoldGroup) {
             /** @var FoldGroup $element */
             $this->renderFoldGroup($element, $parent);
-        ***REMOVED*** else {
+        } else {
             if ($element instanceof Submit) {
                 $holder = $parent->add('div.form-actions.col-sm-offset-3.col-sm-9 formal-submit-element row.form-group.' . $element->getName());
                 if ($element->isFolded()) {
                     $holder->style("display:none;");
-                ***REMOVED***
-            ***REMOVED*** elseif ($element instanceof Markdown) {
+                }
+            } elseif ($element instanceof Markdown) {
                 $div = $parent->add('div.row.form-group.' . $element->getName());
                 if ($element->isFolded()) {
                     $div->style("display:none;");
-                ***REMOVED***
+                }
 
                 if ($element->usesFullWidth()) {
                     $holder = $div->add('div.col-sm-offset-0');
-                ***REMOVED*** else {
+                } else {
                     $holder = $div->add('div.col-sm-offset-3');
-                ***REMOVED***
-            ***REMOVED*** elseif ($element->usesFullWidth()) {
+                }
+            } elseif ($element->usesFullWidth()) {
                 $div = $parent->add('div.row.form-group.' . $element->getName());
                 if ($element->isFolded()) {
                     $div->style("display:none;");
-                ***REMOVED***
+                }
 
                 $holder = $div->add('div.col-sm');
-            ***REMOVED*** else {
+            } else {
                 $div = $parent->add(
                     'div.row.form-group.' . $element->getName()
                 );
                 if ($element->isFolded()) {
                     $div->style("display:none;");
-                ***REMOVED***
+                }
                 $label = $div->add('label.col-sm-3.control-label')
                     ->addText($element->getLabel());
                 $label->attr("id", 'i' . $element->getName());
@@ -275,10 +275,10 @@ class FormAl extends FormAlAbstract
                         ->attr('value', 'checked');
 
                     $check->addHtml($this->optionalChecksText);
-                ***REMOVED***
+                }
 
                 $holder = $div->add('div.col-sm-9');
-            ***REMOVED***
+            }
 
             if ($showErrors) {
                 foreach ($element->getErrors() as $err) {
@@ -288,18 +288,18 @@ class FormAl extends FormAlAbstract
                             "<strong>" . $err['title'] . "</strong> - "
                             . $err['text']
                         );
-                ***REMOVED***
-            ***REMOVED***
+                }
+            }
             // $form->nl();
             $holder->addHtml($element->render());
             if (static::$oldStyleTooltips) {
                 if (!empty($element->getTooltip())) {
                     $div->add('div.col-sm-3.d-none.d-sm-block');
                     $div->add('div.col-sm-9')->addHtml($element->getTooltip());
-                ***REMOVED***
-            ***REMOVED***
-        ***REMOVED***
-    ***REMOVED***
+                }
+            }
+        }
+    }
 
     /**
      * @param FoldGroup   $foldgroup
@@ -322,7 +322,7 @@ class FormAl extends FormAlAbstract
         foreach ($foldgroup->getElements() as $subEl) {
             // Add slideToggle to each element in foldgroup
             $row->addHtml("$('." . $subEl->getName() . "').slideToggle();");
-        ***REMOVED***
+        }
         // Change + into -
         $row->addHtml("var str = " . $jsName . ".text();");
         $row->addHtml(
@@ -331,18 +331,18 @@ class FormAl extends FormAlAbstract
         $row->addHtml("else str = str.replace('-', '+');");
         $row->addHtml($jsName . ".html(str);");
 
-        $row->addHtml("***REMOVED***);");
+        $row->addHtml("});");
 
         if(!empty($this->updatedValues()) && $this->hasErrors()){
             $row->addHtml('
             $( window ).load(function() {
                 $( ".' . $foldgroup->getName() . '" ).trigger( "click" );
-            ***REMOVED***);
+            });
             ');
-        ***REMOVED***
+        }
 
         $row->addHtml("</script>");
-    ***REMOVED***
+    }
 
     /**
      * @param ElementBase $element
@@ -367,14 +367,14 @@ class FormAl extends FormAlAbstract
                 $(document).ready(function () {
                 $( "#i' . $element->getName() . '" ).tooltip({
                     content: \'' . $text . '\',
-                    position: { collision: "flipfit" ***REMOVED***
-                ***REMOVED***);
-                ***REMOVED***);
+                    position: { collision: "flipfit" }
+                });
+                });
                 </script>
             '
             );
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     /**
      * @return array
@@ -382,5 +382,5 @@ class FormAl extends FormAlAbstract
     public function updatedValues()
     {
         return array_merge(parent::updatedValues(), $_POST);
-    ***REMOVED***
-***REMOVED***
+    }
+}

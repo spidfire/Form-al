@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
     $f = new Form("UserEdit");
 
     $f->input('name')
@@ -9,7 +9,7 @@
 
     $f->select('gender')
       ->label("Geslacht")
-      ->values(array("m" => "Man", "f" => "Female"));  // (k = key, v = value, l = sublist name) can be [kv,kv] OR {k => v***REMOVED*** OR {l => {k => v***REMOVED******REMOVED*** OR  {l => [kv]***REMOVED***
+      ->values(array("m" => "Man", "f" => "Female"));  // (k = key, v = value, l = sublist name) can be [kv,kv] OR {k => v} OR {l => {k => v}} OR  {l => [kv]}
 
 
     $f->hidden('insertTime')
@@ -30,18 +30,18 @@
         if($f->submitted()){    
             $data = $f->export();
             DB::update('user',$data,"id=%d",$id);
-        ***REMOVED***
+        }
 
         $user = DB::queryFirstRow("select * from user where id = %d");
         $f->import($user);
-    ***REMOVED***else{
+    }else{
         //insert
         if($f->submitted()){    
             $data = $f->export();
             DB::insert('user',$data);
             CORE::redirect("user/".DB::insertId());
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
 
 

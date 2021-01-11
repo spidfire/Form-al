@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -36,7 +36,7 @@ class Input extends ElementBase
         $this->labelname = $text;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -45,10 +45,10 @@ class Input extends ElementBase
     {
         if ($this->isRequired()) {
             return $this->labelname . '*';
-        ***REMOVED*** else {
+        } else {
             return $this->labelname;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     /**
      * @return bool
@@ -56,7 +56,7 @@ class Input extends ElementBase
     public function isRequired()
     {
         return $this->isRequired;
-    ***REMOVED***
+    }
 
     /**
      * @param bool $isRequired
@@ -64,14 +64,14 @@ class Input extends ElementBase
     public function setIsRequired($isRequired = true)
     {
         $this->isRequired = $isRequired;
-    ***REMOVED***
+    }
 
     public function notNull()
     {
         $this->setIsRequired();
 
         return parent::notNull();
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -85,7 +85,7 @@ class Input extends ElementBase
             ->attr('value', $this->getValue());
         if (!empty($this->maxLength)) {
             $element->attr('maxlength', $this->maxLength);
-        ***REMOVED***
+        }
 
         if (!$this->hasAutoFill) {
             $element->attr('readonly', 'true')
@@ -94,10 +94,10 @@ class Input extends ElementBase
                     'onmouseover', 'javascript:this.removeAttribute(\'readonly\');'
                 )
                 ->attr('autocomplete', 'off');
-        ***REMOVED***
+        }
 
         return $element->render();
-    ***REMOVED***
+    }
 
     /**
      * @param int $length
@@ -109,7 +109,7 @@ class Input extends ElementBase
         $this->addValidator(new MinLength($length));
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * Add validator for setting a maximum on the string length.
@@ -122,12 +122,12 @@ class Input extends ElementBase
     {
         if (empty($length)) {
             $length = self::DEFAULT_MAX_LENGTH;
-        ***REMOVED***
+        }
 
         $this->addValidator(new MaxLength($length));
 
         $this->maxLength = $length;
 
         return $this;
-    ***REMOVED***
-***REMOVED***
+    }
+}

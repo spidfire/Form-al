@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -25,7 +25,7 @@ class FoldGroup extends ElementBase
     {
         parent::__construct($name, $formal);
         $this->markForExport = false;
-    ***REMOVED***
+    }
 
     /**
      * @param string $text
@@ -37,7 +37,7 @@ class FoldGroup extends ElementBase
         $this->labelname = $text;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -45,7 +45,7 @@ class FoldGroup extends ElementBase
     public function getLabel()
     {
         return $this->labelname;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -55,7 +55,7 @@ class FoldGroup extends ElementBase
     {
         // this class doesn't render itself
         return "";
-    ***REMOVED***
+    }
 
     /**
      * @param ElementBase $element
@@ -68,7 +68,7 @@ class FoldGroup extends ElementBase
         $this->elements[] = $element;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @param array $elements
@@ -79,10 +79,10 @@ class FoldGroup extends ElementBase
     {
         foreach ($elements as $el) {
             $this->addElement($el);
-        ***REMOVED***
+        }
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return \FormAl\ElementBase[]
@@ -90,5 +90,5 @@ class FoldGroup extends ElementBase
     public function getElements()
     {
         return $this->elements;
-    ***REMOVED***
-***REMOVED***
+    }
+}

@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -16,5 +16,5 @@ class ImageUpload extends ImageUploadToServer
     public function __construct($name, $formal)
     {
         parent::__construct($name, $formal);
-    ***REMOVED***
-***REMOVED***
+    }
+}

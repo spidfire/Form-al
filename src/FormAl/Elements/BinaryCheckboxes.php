@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -24,7 +24,7 @@ class BinaryCheckboxes extends Input
         $this->options = $options;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return int|null|string
@@ -34,16 +34,16 @@ class BinaryCheckboxes extends Input
         $submit = $this->getSubmitValue();
         if ($submit === null) {
             return $this->value;
-        ***REMOVED***
+        }
         $byte = 0;
         foreach (array_keys($this->options) as $bit) {
             if (isset($submit[$bit])) {
                 $byte |= 1 << $bit;
-            ***REMOVED***
-        ***REMOVED***
+            }
+        }
 
         return $byte;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -76,8 +76,8 @@ class BinaryCheckboxes extends Input
                 ->attr('name', $this->getName() . "[" . $bit . "]")
                 ->attr('checked', $checked);
             $label->addHtml($text);
-        ***REMOVED***
+        }
 
         return $binaryCheckboxes->render();
-    ***REMOVED***
-***REMOVED***
+    }
+}

@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Elements;
 
@@ -30,7 +30,7 @@ class DateNoTimepicker extends ElementBase
         $this->labelname = $text;
 
         return $this;
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -39,10 +39,10 @@ class DateNoTimepicker extends ElementBase
     {
         if ($this->isRequired()) {
             return $this->labelname . '*';
-        ***REMOVED*** else {
+        } else {
             return $this->labelname;
-        ***REMOVED***
-    ***REMOVED***
+        }
+    }
 
     /**
      * @return bool
@@ -50,7 +50,7 @@ class DateNoTimepicker extends ElementBase
     public function isRequired()
     {
         return $this->isRequired;
-    ***REMOVED***
+    }
 
     /**
      * @param bool $isRequired
@@ -58,14 +58,14 @@ class DateNoTimepicker extends ElementBase
     public function setIsRequired($isRequired = true)
     {
         $this->isRequired = $isRequired;
-    ***REMOVED***
+    }
 
     public function notNull()
     {
         $this->setIsRequired();
 
         return parent::notNull();
-    ***REMOVED***
+    }
 
     /**
      * @return string
@@ -83,9 +83,9 @@ class DateNoTimepicker extends ElementBase
         if (isset($_COOKIE['lang'])) {
             $lang = explode('_', $_COOKIE['lang']);
             $lang = $lang[0];
-        ***REMOVED*** else {
+        } else {
             $lang = 'en';
-        ***REMOVED***
+        }
         $element->addHtml(
             "<script>$('#" . $this->getName()
             . "').datetimepicker({
@@ -95,12 +95,12 @@ class DateNoTimepicker extends ElementBase
                     timepicker:false,
                     lang:'".$lang."',
                     format:'d-m-Y'
-                ***REMOVED***);
+                });
             </script>"
         );
 
         return $element->render();
-    ***REMOVED***
+    }
 
     /**
      * @param int $length
@@ -112,5 +112,5 @@ class DateNoTimepicker extends ElementBase
         $this->addValidator(new MinLength($length));
 
         return $this;
-    ***REMOVED***
-***REMOVED***
+    }
+}

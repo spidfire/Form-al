@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Utilities;
 
@@ -17,7 +17,7 @@ class ArrayTools
     public static function isAssoc($array)
     {
         return (array_values($array) !== $array);
-    ***REMOVED***
+    }
 
     /**
      * @param array $array
@@ -27,5 +27,5 @@ class ArrayTools
     public static function isNotAssoc($array)
     {
         return !self::isAssoc($array);
-    ***REMOVED***
-***REMOVED***
+    }
+}

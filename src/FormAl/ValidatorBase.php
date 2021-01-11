@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl;
 
@@ -16,4 +16,4 @@ abstract class ValidatorBase
      * @return mixed
      */
     abstract public function validateInput($data, ElementBase $element);
-***REMOVED***
+}

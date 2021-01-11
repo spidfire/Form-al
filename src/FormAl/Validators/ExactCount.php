@@ -1,4 +1,4 @@
-***REMOVED***
+<?php
 
 namespace FormAl\Validators;
 
@@ -21,7 +21,7 @@ class ExactCount extends ValidatorBase
     public function __construct($count)
     {
         $this->exactCount = $count;
-    ***REMOVED***
+    }
 
     /**
      * @param array       $data
@@ -34,19 +34,19 @@ class ExactCount extends ValidatorBase
         if (is_array($data)) {
             if (count($data) == $this->exactCount) {
                 return true;
-            ***REMOVED*** else {
+            } else {
                 $element->error(
                     "Verkeerde hoeveelheid",
-                    "De invoer moet bestaan uit  exact {$this->exactCount***REMOVED*** elementen"
+                    "De invoer moet bestaan uit  exact {$this->exactCount} elementen"
                 );
-            ***REMOVED***
-        ***REMOVED*** else {
+            }
+        } else {
             $element->error(
                 "Te weinig inhoud",
-                "De invoer moet bestaan uit  exact {$this->exactCount***REMOVED*** elementen"
+                "De invoer moet bestaan uit  exact {$this->exactCount} elementen"
             );
-        ***REMOVED***
+        }
 
         return false;
-    ***REMOVED***
-***REMOVED***
+    }
+}
