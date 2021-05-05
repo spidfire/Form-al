@@ -36,7 +36,7 @@ class Submit extends ElementBase
     {
         $element = new HtmlBuilder('input.form-control.btn.btn-primary.formal-element');
         $element->attr('style', 'width:250px');
-        $element->attr('onclick', "if(this.getAttribute('rel')=='submitted'){return false;};this.setAttribute('rel','submitted');setTimeout(function(){this.removeAttribute('rel')}, 3000);");
+        $element->attr('onclick', "if(this.getAttribute('rel')=='submitted'){return false;};this.setAttribute('rel','submitted');let scope = this;setTimeout(function(){scope.removeAttribute('rel')}, 3000);");
         $element->attr('type', 'submit')
             ->attr('name', md5($this->getName()))
             ->attr('value', $this->getLabel());
