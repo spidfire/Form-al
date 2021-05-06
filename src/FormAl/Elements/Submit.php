@@ -17,6 +17,17 @@ class Submit extends ElementBase
     /** @var bool */
     public $markForExport = false;
 
+    private $canBeUsedMultipleTimes = false;
+    private $reuseDelay = 0;
+
+    public function allowMultipleTimes(int $msDelay = 3000)
+    {
+        $this->canBeUsedMultipleTimes = true;
+        $this->reuseDelay = $msDelay;
+
+        return $this;
+    }
+
     /**
      * @return bool
      */
@@ -34,9 +45,15 @@ class Submit extends ElementBase
      */
     public function render()
     {
+        $onclick = "if(this.getAttribute('rel')=='submitted'){return false;};this.setAttribute('rel','submitted');";
+
+        if ($this->canBeUsedMultipleTimes) {
+            $onclick .= "var scope = this;setTimeout(function(){scope.removeAttribute('rel')}, " . $this->reuseDelay . ");";
+        }
+
         $element = new HtmlBuilder('input.form-control.btn.btn-primary.formal-element');
         $element->attr('style', 'width:250px');
-        $element->attr('onclick', "if(this.getAttribute('rel')=='submitted'){return false;};this.setAttribute('rel','submitted');setTimeout(function(){this.removeAttribute('rel')}, 3000);");
+        $element->attr('onclick', $onclick);
         $element->attr('type', 'submit')
             ->attr('name', md5($this->getName()))
             ->attr('value', $this->getLabel());
