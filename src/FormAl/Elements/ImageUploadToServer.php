@@ -118,6 +118,10 @@ class ImageUploadToServer extends Input
                 ->attr('type', 'file')
                 ->attr('name', $this->getName())
                 ->attr('accept', "image/*");
+
+            if ($this->isDisabled()) {
+                $element->attr('disabled', 'disabled');
+            }
         }
 
         return $element->render();

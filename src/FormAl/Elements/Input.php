@@ -87,6 +87,10 @@ class Input extends ElementBase
             $element->attr('maxlength', $this->maxLength);
         }
 
+        if ($this->isDisabled()) {
+            $element->attr('disabled', 'disabled');
+        }
+
         if (!$this->hasAutoFill) {
             $element->attr('readonly', 'true')
                 ->attr('onfocus', 'javascript:this.removeAttribute(\'readonly\');')

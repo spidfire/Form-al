@@ -34,6 +34,10 @@ class PositiveInteger extends Integer
             ->attr('min', '1')
             ->attr('value', $this->getValue());
 
+        if ($this->isDisabled()) {
+            $element->attr('disabled', 'disabled');
+        }
+
         return $element->render();
     }
 }

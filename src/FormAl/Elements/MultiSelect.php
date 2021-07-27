@@ -83,6 +83,10 @@ class MultiSelect extends Input
                 ->attr('value', "true")
                 ->attr('name', $this->getName() . "[" . $key . "]");
 
+            if ($this->isDisabled()) {
+                $label->attr('disabled', 'disabled');
+            }
+
             $label->addText($value);
         }
     }

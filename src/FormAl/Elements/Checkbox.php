@@ -61,6 +61,10 @@ class Checkbox extends Input
             ->attr('checked', $checked)
             ->attr('value', $this->trueValue);
 
+        if ($this->isDisabled()) {
+            $element->attr('disabled', true);
+        }
+
         $tooltip = "";
         if (empty($this->getTooltip()) == false) {
             $tooltip = " " . $this->getTooltip();

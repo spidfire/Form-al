@@ -60,7 +60,10 @@ class Radio extends Input
                     )
                     ->attr('value', $key)
                     ->addText($value);
-
+                
+                if ($this->isDisabled()) {
+                    $builder->attr('disabled', 'disabled');
+                }
             }
         }
     }

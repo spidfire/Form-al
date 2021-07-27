@@ -30,7 +30,11 @@ class Textarea extends Input
             ->attr('cols', $this->cols)
             ->attr('rows', $this->rows)
             ->addText($this->getValue());
-
+            
+        if ($this->isDisabled()) {
+            $element->attr('disabled', 'disabled');
+        }
+        
         if ($this->fancy) {
             return $element->render()
             . '<script type="text/javascript">

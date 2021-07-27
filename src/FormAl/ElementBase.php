@@ -36,6 +36,8 @@ abstract class ElementBase
     private $folded = false;
     /** @var bool  */
     protected $hasAutoFill = true;
+    /** @var bool */
+    protected $disabled = false;
 
     /**
      * @return string
@@ -265,6 +267,22 @@ abstract class ElementBase
     public function isFolded()
     {
         return $this->folded;
+    }
+
+    /**
+     * @param bool $bool
+     */
+    public function setDisabled($bool)
+    {
+        $this->disabled = $bool;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDisabled()
+    {
+        return $this->disabled;
     }
 
     /**
