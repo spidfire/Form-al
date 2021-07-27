@@ -78,6 +78,10 @@ class Integer extends ElementBase
             ->attr('name', $this->getName())
             ->attr('value', $this->getValue());
 
+        if ($this->isDisabled()) {
+            $element->attr('disabled', 'disabled');
+        }
+
         return $element->render();
     }
 

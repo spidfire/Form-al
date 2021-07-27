@@ -20,13 +20,6 @@ class Datepicker extends ElementBase
     /** @var bool */
     private $isRequired = false;
 
-    /** @var bool */
-    private $isDisabled = false;
-
-    public function setDisabled(bool $disabled){
-        $this->isDisabled = $disabled;
-    }
-
     /**
      * @param string $text
      *
@@ -85,7 +78,7 @@ class Datepicker extends ElementBase
             ->attr('name', $this->getName())
             ->attr('id', $this->getName());
 
-        if($this->isDisabled){
+        if($this->isDisabled()){
             $element->attr('disabled', 'disabled');
         }
 

@@ -35,6 +35,10 @@ class Select extends Input
         $element = new HtmlBuilder('select.form-control');
         $element->attr('name', $this->getName());
 
+        if ($this->isDisabled()) {
+            $element->attr('disabled', 'disabled');
+        }
+
         $this->optGroups($element, $this->options);
 
         return $element->render();

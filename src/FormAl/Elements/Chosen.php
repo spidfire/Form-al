@@ -51,6 +51,10 @@ class Chosen extends Input
         $element->attr('multiple', 'multiple');
         $element->attr('class', 'chosen-select form-control');
 
+        if ($this->isDisabled()) {
+            $element->attr('disabled', 'disabled');
+        }
+
         $this->optGroups($element, $this->options);
 
         return $element->render() . "<script type='text/javascript'>

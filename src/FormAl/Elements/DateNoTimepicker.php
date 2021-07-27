@@ -80,6 +80,10 @@ class DateNoTimepicker extends ElementBase
             ->attr('value', $this->getValue());
         //->attr('style', 'height: 32px; width: 400px;');
 
+        if ($this->isDisabled()) {
+            $element->attr('disabled', 'disabled');
+        }
+
         if (isset($_COOKIE['lang'])) {
             $lang = explode('_', $_COOKIE['lang']);
             $lang = $lang[0];

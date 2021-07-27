@@ -49,12 +49,16 @@ class Colorpicker extends ElementBase
             ->attr('id', $this->getName())
             ->attr('value', $this->getValue());
 
-        $element->add('input')
+        $colorpicker = $element->add('input')
             ->attr('name', $this->getName())
             ->attr('type', "text")
             ->attr('value', $this->getValue())
             ->attr('class', "form-control")
             ->attr('style', "display:inline; width: 366px;");
+
+        if ($this->isDisabled()) {
+            $colorpicker->attr('disabled', 'disabled');
+        }
 
         $element->add('span')
             ->attr('class', "input-group-addon")

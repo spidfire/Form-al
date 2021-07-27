@@ -70,6 +70,10 @@ class Button extends ElementBase
             ->attr('style', "max-width: 400px;")
             ->addText($this->text);
 
+        if ($this->isDisabled()) {
+            $element->attr('disabled', true);
+        }
+
         return $element->render();
     }
 }
